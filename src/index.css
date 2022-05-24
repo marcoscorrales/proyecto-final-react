@@ -18,7 +18,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background: #000;
+  background: rgb(2,0,36);
+  background: linear-gradient(165deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 50%, rgba(191,23,208,1) 100%);
 }
 
 ul{
@@ -40,14 +41,16 @@ code {
   text-transform: uppercase;
   background: transparent;
   color: #fff;
-  border: 1px solid #fff;
+  border: 1px solid #bf17d0;
+  border-radius: 10px;
   cursor: pointer;
 }
 
 .btn-light{
-  background: rgba(255, 255, 255, .2);
+  background: rgb(2,0,36);
+  background: linear-gradient(344deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 50%, rgba(191,23,208,1) 100%);
 }
 
 .btn:hover{
-  background: rgba(255, 255, 255, .2);
+  background: rgba(13, 13, 13, 0.2);
 }
