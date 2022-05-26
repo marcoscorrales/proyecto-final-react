@@ -1,14 +1,14 @@
 .footer{
     width: 100%;
     padding: 6rem 0;
-    background: rgba(0,0,0,.8);
+    background: #040344a5;
 }
 
 .footer-container{
     max-width: 1140px;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     grid-gap: 40px;
 }
 
@@ -52,12 +52,14 @@
     padding-top: 0;
 }
 
-@media screen and (max-width:640px) {
-    .footer-container{
-        grid-template-columns: 1fr;
-    }
+.right .social{
+    margin: auto;
+}
 
-    .right .social{
-        margin: auto;
+/* media queries MOBILE FIRTS */
+
+@media screen and (min-width:640px) {
+    .footer-container{
+        grid-template-columns: repeat(2, 1fr);
     }
 }

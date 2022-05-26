@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './Video.css'
 import Typed from 'react-typed';
 
-// import spaceVideo from '../../assets/fondo_liquid.mp4' 
+// import spaceVideo from '../../assets/space.mp4' 
 
 
 const Video = () => {
@@ -17,7 +17,8 @@ const Video = () => {
                 <h1>Diseños Impresora 3D</h1>
                 <p>Mejores Diseños Para  
                   <Typed 
-                  strings={[' Imprimir', ' Comprar', ' Vender']}
+                  className='typed__text'
+                  strings={['Imprimir', 'Comprar', 'Vender']}
                   typeSpeed={120}
                   backSpeed={140}
                   loop

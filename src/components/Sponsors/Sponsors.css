@@ -1,0 +1,38 @@
+.sponsors{
+    width: 100%;
+    max-width: 1200px;
+    padding: 1rem;
+    margin: 1rem auto;
+}
+
+.sponsors__title{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.sponsors__imgs{
+    display: none;
+}
+
+/* media queries MOBILE FIRTS */
+
+@media screen and (min-width:576px){
+    .carousel{
+        display: none;
+    }    
+
+    .sponsors__title{
+        text-align: left;
+        margin-left: 0.5rem;
+    }
+
+    .sponsors__imgs{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+}

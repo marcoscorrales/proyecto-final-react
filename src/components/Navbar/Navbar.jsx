@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 import {FaBars, FaTimes} from 'react-icons/fa';
+import logo from '../../assets/images/logo2.png' 
 import './Navbar.css'
 
 const Navbar = () => {
@@ -20,19 +21,19 @@ const Navbar = () => {
 
   return (
     <div className={color ? 'header header-bg' : 'header'}>
-        <Link to='/'><h1>BRAND</h1></Link>  
+        <Link to='/'><img className='logo__img' src={logo} alt="logo" /></Link>  
         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li>
-                <Link to='/'>Home</Link>
+                <Link to='/' className='link'>Home</Link>
             </li>
             <li>
-                <Link to='/pricing'>Pricing</Link>
+                <Link to='/pricing' className='link'>Pricing</Link>
             </li>
             <li>
-                <Link to='/training'>Training</Link>
+                <Link to='/training' className='link'>Training</Link>
             </li>
             <li>
-                <Link to='/contact'>Contact</Link>
+                <Link to='/contact' className='link'>Contact</Link>
             </li>
         </ul>
         <div className='hamburger' onClick={handleClick}>

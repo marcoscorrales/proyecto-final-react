@@ -6,7 +6,7 @@
   padding: 0;
 }
 
-h1, h4, p, a{
+h1, h2, h4, p, a{
   color: #fff;
 }
 
@@ -53,4 +53,6 @@ code {
 
 .btn:hover{
   background: rgba(13, 13, 13, 0.2);
+  color: white;
+  border: 1px solid #bf17d0;
 }
