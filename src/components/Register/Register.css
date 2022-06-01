@@ -2,11 +2,11 @@ body{
     background-color: aquamarine !important;
 }
 
-.login{
+.register{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 120vh;
     width: 100%;
     object-fit: contain;
 }
@@ -68,21 +68,6 @@ body{
     cursor: pointer;
 }
 
-.form .checkbox-text{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.checkbox-text .checkbox-content{
-    display: flex;
-    align-items: center;
-}
-
-.checkbox-content input{
-    margin: 0 8px -2px 4px;
-}
-
 .form .text{
     color: #333;
     font-size: 1rem;
@@ -97,7 +82,7 @@ body{
     text-decoration: underline;
 }
 
-.btn-login{
+.btn-register{
     padding: 12px 32px;
     font-size: 1.2rem;
     text-transform: uppercase;
@@ -109,12 +94,12 @@ body{
     cursor: pointer;
 }
 
-.btn-login:hover{
+.btn-register:hover{
     color: white;
     border: 1px solid #bf17d0;
 }
 
-.form .login__signup{
+.form .register__signup{
     margin-top: 30px;
     text-align: center;
 }

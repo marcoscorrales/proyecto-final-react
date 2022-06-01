@@ -1,17 +1,17 @@
 import React from 'react'
-import Login from '../components/Login/Login.jsx'
+
+import Register from '../components/Register/Register'
 import Footer from '../components/Footer/Footer.jsx'
 import Navbar from '../components/Navbar/Navbar.jsx'
 
-const InicioSesion = () => {
-
+const Registro = () => {
   return (
     <div>
-      <Navbar/>
-      <Login/>
-      <Footer/>
+     <Navbar/>
+     <Register/>
+     <Footer/>
     </div>
   )
 }
 
-export default InicioSesion
+export default Registro
