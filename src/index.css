@@ -51,7 +51,7 @@ code {
   background: linear-gradient(344deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 50%, rgba(191,23,208,1) 100%);
 }
 
-.btn:hover{
+.btn-login:hover{
   background: rgba(13, 13, 13, 0.2);
   color: white;
   border: 1px solid #bf17d0;

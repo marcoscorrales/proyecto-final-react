@@ -2,12 +2,12 @@
     width: 100%;
     max-width: 1200px;
     padding: 1rem;
-    margin: 1rem auto;
+    margin: 0 auto;
 }
 
 .populares__imgs{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 1rem;
 }
 
@@ -16,18 +16,82 @@
     text-align: center;
 }
 
+.card__title{
+    color: #fff;
+    text-align: center;
+}
+
+.populares__card{
+    color: #fff;
+    border: 2px solid #bf17d0;
+    background-color: transparent;
+}
+
+.populares__card:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+}
+
+.populares__likes{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card__btn{
+    padding: 6px 16px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    background: rgb(2,0,36);
+    background: linear-gradient(344deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 50%, rgba(191,23,208,1) 100%);
+    color: #fff;
+    border: 1px solid #bf17d0;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .card__btn:hover{
+    background: rgba(13, 13, 13, 0.2);
+    color: white;
+    border: 1px solid #bf17d0;
+  }
+
+  .likes{
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+  }
 
 /* media queries MOBILE FIRTS */
 
-@media screen and (min-width:768px){  
-
+@media screen and (min-width:576px){
+    .populares__imgs{
+        grid-template-columns: repeat(2, 1fr);
+    }
     .populares__title{
         text-align: left;
         margin-left: 0.5rem;
     }
+}
+
+@media screen and (min-width:992px){  
+
+    
 
     .populares__imgs{
         grid-template-columns: repeat(4, 1fr);
     }
 
+    .card__title{
+        text-align: left;
+    }
+
+    .populares__likes{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
 }
+
+

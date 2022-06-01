@@ -32,6 +32,10 @@
     font-weight: 500;
 }
 
+.nav-menu a:hover{
+    color: #bf17d0;
+}
+
 .hamburger{
     display: none;
 }
