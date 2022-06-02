@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react';
 import './Register.css'
 
 import {FiMail} from 'react-icons/fi';
@@ -8,6 +9,13 @@ import {FiUser} from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 const Register = () => {
+    //Toggle para mostrar contraseña 
+
+    const [passwordShown, setpasswordShown] = useState(false);
+    const togglePassword = () =>{
+      setpasswordShown(!passwordShown);
+    }
+
   return (
     <div className='register'>
       <div className='container'>
@@ -25,9 +33,9 @@ const Register = () => {
           </div>
 
           <div className='input__field'>
-            <input type="password" name="password" id="password" placeholder='Contraseña' required/>
+            <input type={passwordShown ? "text" : "password"} name="password" id="password" placeholder='Contraseña' required/>
             <FiLock className='field__icon' size={20} />
-            <FiEyeOff className='field__icon-eye' size={20}/>
+            <FiEyeOff onClick={togglePassword} className='field__icon-eye' size={20}/>
           </div>
 
           <div className='input__field'>
