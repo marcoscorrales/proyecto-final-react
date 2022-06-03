@@ -27,6 +27,11 @@
     padding: 0 1rem;
 }
 
+.link__logo{
+    display: flex;
+    align-items: center;
+}
+
 .nav-menu a{
     font-size: 1.2rem;
     font-weight: 500;

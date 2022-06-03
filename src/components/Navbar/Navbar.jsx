@@ -4,7 +4,11 @@ import {FaBars, FaTimes} from 'react-icons/fa';
 import logo from '../../assets/images/logo2.png' 
 import './Navbar.css'
 
+import {FiUser} from 'react-icons/fi';
+import {FiLogIn} from 'react-icons/fi';
+
 const Navbar = () => {
+    //Cambio de color cuando se hace scroll
     const[click, setClick] = useState(false)
     const handleClick = () => setClick(!click)
 
@@ -24,16 +28,22 @@ const Navbar = () => {
         <Link to='/'><img className='logo__img' src={logo} alt="logo" /></Link>  
         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li>
-                <Link to='/' className='link'>Home</Link>
+                <Link to='/' className='link'>Inicio</Link>
             </li>
             <li>
-                <Link to='/pricing' className='link'>Pricing</Link>
+                <Link to='/comisiones' className='link'>Comisiones</Link>
             </li>
             <li>
                 <Link to='/training' className='link'>Training</Link>
             </li>
             <li>
-                <Link to='/contact' className='link'>Contact</Link>
+                <Link to='/contact' className='link'>Contacto</Link>
+            </li>
+            <li>
+                <Link to='/login' className='link link__logo'><FiLogIn className='header__logo' size={30}/>Entrar</Link>
+            </li>
+            <li>
+                <Link to='/register' className='link link__logo'><FiUser className='header__logo' size={30}/>Registro</Link>
             </li>
         </ul>
         <div className='hamburger' onClick={handleClick}>
