@@ -34,10 +34,10 @@ const Navbar = () => {
                 <Link to='/comisiones' className='link'>Comisiones</Link>
             </li>
             <li>
-                <Link to='/training' className='link'>Training</Link>
+                <Link to='/categorias' className='link'>Categorias</Link>
             </li>
             <li>
-                <Link to='/contact' className='link'>Contacto</Link>
+                <Link to='/contacto' className='link'>Contacto</Link>
             </li>
             <li>
                 <Link to='/login' className='link link__logo'><FiLogIn className='header__logo' size={30}/>Entrar</Link>

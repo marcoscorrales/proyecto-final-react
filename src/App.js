@@ -5,6 +5,7 @@ import Home from "./routes/Home.jsx";
 import Comisiones from "./routes/Comisiones";
 import InicioSesion from "./routes/InicioSesion.jsx";
 import Registro from "./routes/Registro.jsx";
+import Contacto from "./routes/Contacto.jsx";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/comisiones" element={<Comisiones/>}/>
+        <Route path="/contacto" element={<Contacto/>}/>
         <Route path="/login" element={<InicioSesion/>}/>
         <Route path="/register" element={<Registro/>}/>
       </Routes>
