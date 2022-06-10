@@ -55,6 +55,13 @@
 .right .social{
     margin: auto;
 }
+.terminos{
+    text-align: center;
+}
+
+.terminos__link{
+    text-decoration: underline;
+}
 
 /* media queries MOBILE FIRTS */
 

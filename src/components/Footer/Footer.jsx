@@ -1,5 +1,6 @@
 import React from 'react'
 import './Footer.css'
+import { Link } from 'react-router-dom';
 import {FaFacebook, FaLinkedin, FaMailBulk, FaPhone, FaSearchLocation, FaTwitter} from 'react-icons/fa'
 
 const Footer = () => {
@@ -20,6 +21,7 @@ const Footer = () => {
                 <div className='email'>
                     <h4><FaMailBulk size={20} style={{color: '#fff', marginRight: '2rem'}}/> correo@correo.com</h4>
                 </div>
+                
             </div>
             <div className='right'>
                 <h4>Sobre la compañia</h4>
@@ -29,6 +31,7 @@ const Footer = () => {
                     <FaTwitter size={30} style={{color: '#fff', marginRight: '1rem'}}/>
                     <FaLinkedin size={30} style={{color: '#fff', marginRight: '1rem'}}/>
                 </div>
+                <p className='terminos'>&#169; 2022 Modelos3dWeb, Inc. · Marcos Corrales Castro · <Link className='terminos__link' to="/terminos">Terms</Link></p>
             </div>
         </div>
     </div>

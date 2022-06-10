@@ -6,6 +6,7 @@ import Comisiones from "./routes/Comisiones";
 import InicioSesion from "./routes/InicioSesion.jsx";
 import Registro from "./routes/Registro.jsx";
 import Contacto from "./routes/Contacto.jsx";
+import Terminos from "./routes/Terminos.jsx";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/contacto" element={<Contacto/>}/>
         <Route path="/login" element={<InicioSesion/>}/>
         <Route path="/register" element={<Registro/>}/>
+        <Route path="/terminos" element={<Terminos/>}/>
       </Routes>
     </>
   );
