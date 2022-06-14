@@ -1,0 +1,51 @@
+.category{
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    padding: 1rem;
+    margin: 0 auto;
+}
+
+.category__title{
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 6rem;
+}
+
+.category__container{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.category__card{
+    border-radius: 5px;
+    border: 2px solid #bf17d0;
+}
+
+.category__card__title{
+    text-align: center;
+    background-color: #fff;
+    color: black;
+    padding: 0.5rem 0;
+    margin: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px ;
+}
+
+/* media queries MOBILE FIRTS */
+
+@media screen and (min-width:576px){
+
+    .category__title{
+        text-align: left;
+        margin-left: 0.5rem;
+    }
+
+    .category__container{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+}
