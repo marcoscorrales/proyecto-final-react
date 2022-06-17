@@ -12,10 +12,15 @@
     margin-top: 6rem;
 }
 
+.orderby__text{
+    color: #fff;
+}
+
 .category__container{
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
+    margin-top: 1rem;
 }
 
 .category__card{
@@ -46,6 +51,14 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
+    }
+
+}
+
+@media screen and (min-width:992px){  
+
+    .category__container{
+        grid-template-columns: repeat(4, 1fr);
     }
 
 }
