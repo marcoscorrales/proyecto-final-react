@@ -11,7 +11,7 @@ const ProductCard = (prop) => {
   return (
     <div className='productCard'>
         <div className='productCard-img'>
-          <Link to='#'>
+          <Link to={"/paginaProducto/"+prop.id}>
             <div className='productCard-img__overlay'>
                <BsEyeFill size={30}/>
             </div>
@@ -19,7 +19,7 @@ const ProductCard = (prop) => {
           </Link>
         </div>
         <div className="productCard-content">
-            <h3 className='productCard__title'><Link to='#'>{prop.title}</Link></h3>
+            <h3 className='productCard__title'><Link to={"/paginaProducto/"+prop.id}>{prop.title}</Link></h3>
         </div>
         <div className="productCard-info">
           <div className="productCard-info__price">

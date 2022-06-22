@@ -1,0 +1,104 @@
+.productPage{
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    padding: 1rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.productPage__title{
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 6rem;
+}
+
+.productPage-image{
+    display: flex;
+    justify-content: center;
+}
+
+.btn-descargar{
+    padding: 12px 32px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    background: rgb(2,0,36);
+    background: linear-gradient(344deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 50%, rgba(191,23,208,1) 100%);
+    color: #fff;
+    border: 1px solid #bf17d0;
+    cursor: pointer;
+}
+
+.btn-like{
+    padding: 12px 32px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    background: rgb(2,0,36);
+    background: linear-gradient(344deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 50%, rgba(191,23,208,1) 100%);
+    color: #fff;
+    border: 1px solid #bf17d0;
+    cursor: pointer;
+}
+
+.btn-descargar:hover{
+    color: white;
+    border: 1px solid #bf17d0;
+}
+
+.productPage-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 1rem;
+}
+
+.productPage-info__buttons, .productPage-info__likes{
+    width: 100%;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.precio-descarga, .cifra-likes{
+    color: #fff;
+    padding: 14px 32px;
+    font-size: 1.2rem;
+    background: #be17d0c9;
+    border: 1px solid #bf17d0;
+    border-left: unset;
+}
+
+.productPage-descripcion__title, .productPage-categorias__title, .productPage-autor__title{
+    text-align: center;
+    color: #fff;
+}
+
+.productPage-categorias__container{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.productPage-categorias__link{
+    font-size: 1.2rem;
+    padding: 10px;
+    border: 2px solid #bf17d0;
+    border-radius: 5px;
+}
+.productPage-autor__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.productPage-autor__img{
+    border-radius: 50%;
+}
+
+.productPage-autor__name{
+    font-size: 1.5rem;
+    color: #bf17d0;
+}
+

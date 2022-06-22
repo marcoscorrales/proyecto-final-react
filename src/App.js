@@ -9,6 +9,7 @@ import Contacto from "./routes/Contacto.jsx";
 import Terminos from "./routes/Terminos.jsx";
 import Categorias from "./routes/Categorias.jsx";
 import Categoria from "./routes/Categoria.jsx";
+import PaginaProducto from "./routes/PaginaProducto.jsx";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/contacto" element={<Contacto/>}/>
         <Route path="/login" element={<InicioSesion/>}/>
         <Route path="/register" element={<Registro/>}/>
+        <Route path='/paginaProducto/:id' element={<PaginaProducto/>}/> 
         <Route path="/terminos" element={<Terminos/>}/>
       </Routes>
     </>

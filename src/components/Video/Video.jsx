@@ -27,8 +27,8 @@ const Video = () => {
                 </p>
             
             <div>
-                <Link to='/training' className='btn'>Comprar</Link>
-                <Link to='/contact' className='btn btn-light'>Vender</Link>
+                <Link to='/categorias' className='btn'>Comprar</Link>
+                <Link to='/login' className='btn btn-light'>Vender</Link>
             </div>
         </div>
     </div>
