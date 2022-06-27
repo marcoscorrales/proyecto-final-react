@@ -39,8 +39,8 @@ const ProductPage = () => {
           <div className='productPage-autor'>
             <h3 className='productPage-autor__title'>Autor</h3>
             <section className='productPage-autor__container'>
-              <Link to='/'><img src={usuario} className='img-fluid productPage-autor__img' alt="usuario" /></Link>
-            <Link to='/' className='productPage-autor__name'>Marcos Corrales Castro</Link>
+              <Link to='/paginaUsuario/1'><img src={usuario} className='img-fluid productPage-autor__img' alt="usuario" /></Link>
+            <Link to='/paginaUsuario/1' className='productPage-autor__name'>Marcos Corrales Castro</Link>
             </section>
           </div>
         </div>

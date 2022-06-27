@@ -1,17 +1,16 @@
 import React from 'react'
-import ProductPage from '../components/ProductPage/ProductPage.jsx'
+import UserPage from '../components/UserPage/UserPage.jsx'
 import Footer from '../components/Footer/Footer.jsx'
 import Navbar from '../components/Navbar/Navbar.jsx'
 
-const PaginaProducto = () => {
-
+const PaginaUsuario = () => {
   return (
     <div>
         <Navbar/>
-        <ProductPage/>
+        <UserPage/>
         <Footer/>
     </div>
   )
 }
 
-export default PaginaProducto
+export default PaginaUsuario

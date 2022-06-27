@@ -86,7 +86,13 @@
     padding: 10px;
     border: 2px solid #bf17d0;
     border-radius: 5px;
+    text-decoration: none;
 }
+
+.productPage-categorias__link:hover{
+    color: #fff;
+}
+
 .productPage-autor__container{
     display: flex;
     flex-direction: column;
@@ -102,3 +108,14 @@
     color: #bf17d0;
 }
 
+.productPage-autor__name:hover{
+    color: #bf17d0;
+}
+
+/* media queries MOBILE FIRTS */
+
+@media screen and (min-width:992px) {
+    .productPage__title, .productPage-descripcion__title, .productPage-categorias__title, .productPage-autor__title{
+        text-align: left;
+    }
+}

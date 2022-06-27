@@ -1,0 +1,51 @@
+.userPage{
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    padding: 1rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.userPage__title{
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 6rem;
+}
+
+.userPage-image{
+    display: flex;
+    justify-content: center;
+}
+
+.userPage-modelos__title, .userPage-likes__title{
+    text-align: center;
+}
+
+.userPage-modelos__cards, .userPage-likes__cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+/* media queries MOBILE FIRTS */
+
+@media screen and (min-width:576px){
+    .userPage-modelos__cards, .userPage-likes__cards{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width:992px){  
+
+    .userPage-modelos__cards, .userPage-likes__cards{
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .userPage__title, .userPage-modelos__title, .userPage-likes__title{
+        text-align: left;
+    }
+
+}

@@ -5,6 +5,10 @@
     margin: 0 auto;
 }
 
+.populares__title{
+    text-align: center;
+}
+
 .populares__imgs{
     display: grid;
     grid-template-columns: 1fr;
@@ -23,6 +27,10 @@
 
     .populares__imgs{
         grid-template-columns: repeat(4, 1fr);
+    }
+
+    .populares__title{
+        text-align: left;
     }
 
 }

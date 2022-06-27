@@ -10,6 +10,7 @@ import Terminos from "./routes/Terminos.jsx";
 import Categorias from "./routes/Categorias.jsx";
 import Categoria from "./routes/Categoria.jsx";
 import PaginaProducto from "./routes/PaginaProducto.jsx";
+import PaginaUsuario from "./routes/PaginaUsuario.jsx";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/login" element={<InicioSesion/>}/>
         <Route path="/register" element={<Registro/>}/>
         <Route path='/paginaProducto/:id' element={<PaginaProducto/>}/> 
+        <Route path='/paginaUsuario/:id' element={<PaginaUsuario/>}/> 
         <Route path="/terminos" element={<Terminos/>}/>
       </Routes>
     </>
