@@ -18,10 +18,37 @@
 .userPage-image{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+}
+
+.userPage-image__info{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.userPage-image__info span{
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.userPage-image__info button{
+    color: #fff;
+    font-size: 1.2rem;
+    background: #be17d0c9;
+    color: #fff;
+    border: 1px solid #bf17d0;
+    cursor: pointer;
 }
 
 .userPage-modelos__title, .userPage-likes__title{
     text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .userPage-modelos__cards, .userPage-likes__cards {
@@ -30,11 +57,24 @@
     gap: 1rem;
 }
 
+.userPage-modelos__title__link, .userPage-likes__title__link{
+    text-decoration: underline;
+    color: #bf17d0;
+    font-size: 1.5rem;
+}
 /* media queries MOBILE FIRTS */
 
 @media screen and (min-width:576px){
     .userPage-modelos__cards, .userPage-likes__cards{
         grid-template-columns: repeat(2, 1fr);
+    }
+    .userPage-image{
+        flex-direction: row;
+        text-align: left;
+        gap: 5rem;
+    }
+    .userPage-modelos__title, .userPage-likes__title{
+        flex-direction: row;
     }
 }
 

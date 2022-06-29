@@ -1,0 +1,39 @@
+.likesUserPage{
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    padding: 1rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.likesUserPage__title{
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 6rem;
+}
+
+.likesUserPage__cards{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+/* media queries MOBILE FIRTS */
+
+@media screen and (min-width:576px){
+    .likesUserPage__cards{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width:992px){  
+
+    .likesUserPage__cards{
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+}

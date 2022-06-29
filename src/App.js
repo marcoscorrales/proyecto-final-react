@@ -11,6 +11,8 @@ import Categorias from "./routes/Categorias.jsx";
 import Categoria from "./routes/Categoria.jsx";
 import PaginaProducto from "./routes/PaginaProducto.jsx";
 import PaginaUsuario from "./routes/PaginaUsuario.jsx";
+import PaginaProductosUsuario from "./routes/PaginaProductosUsuario.jsx";
+import PaginaLikesUsuario from "./routes/PaginaLikesUsuario.jsx";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         <Route path="/register" element={<Registro/>}/>
         <Route path='/paginaProducto/:id' element={<PaginaProducto/>}/> 
         <Route path='/paginaUsuario/:id' element={<PaginaUsuario/>}/> 
+        <Route path='/paginaProductosUsuario/:id' element={<PaginaProductosUsuario/>}/> 
+        <Route path='/paginaLikesUsuario/:id' element={<PaginaLikesUsuario/>}/> 
         <Route path="/terminos" element={<Terminos/>}/>
       </Routes>
     </>

@@ -9,17 +9,18 @@ const Category = () => {
   const id = 1;
   return (
     <div className='category'>
-        <h1 className='category__title'>Categoria</h1>
+      <div className='category__header'>
+         <h1 className='category__title'>Categoria</h1>
+        <nav className="category__nav">
+                <span>Ordenar por:</span>
+                <a className="category__nav__text">Descargas 
+                <span className="category__nav__text">↓</span></a>
+                <a className="category__nav__text" >Fecha</a>
+                <a className="category__nav__text">Me gusta</a>
+          </nav>
+      </div>
+       
             <div className='category__cards'>
-
-              <nav className="category__cards__nav">
-                <span className='orderby__text'>Ordenar por:</span>
-                <a className="">Descargas 
-                <span className="">↓</span></a>
-                <a className="" >Fecha</a>
-                <a className="">Me gusta</a>
-              </nav>
-          
                 <div className='category__container'>
                 {elements.map((value, index) => {
                   return <ProductCard key={index} id={id} imgProduct={product} title={"Producto"+index} price={"100€"} likes="100" imgAuthor={usuario} author={value}/> 

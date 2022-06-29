@@ -6,14 +6,30 @@
     margin: 0 auto;
 }
 
+.category__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
 .category__title{
     font-size: 2.5rem;
     text-align: center;
     margin-top: 6rem;
 }
 
-.orderby__text{
+.category__nav{
+    font-size: 1.2rem;
+    display: flex;
+    gap: .5rem;
+}
+
+.category__nav span{
     color: #fff;
+}
+
+.category__nav__text{
+    cursor: pointer;
 }
 
 .category__container{
