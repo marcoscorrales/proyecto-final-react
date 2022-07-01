@@ -1,0 +1,87 @@
+.uploadProduct{
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    padding: 1rem;
+    margin: 0 auto;
+}
+
+.uploadProduct__title{
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 6rem;
+}
+
+.uploadProduct__form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    gap: 2rem;
+}
+
+.uploadProduct__info{
+    width: 100%;
+    max-width: 576px;
+}
+
+.uploadProduct__info__field{
+    display: flex;
+    flex-direction: column;
+}
+
+.uploadProduct__info__field input, select{
+    padding: 0.5rem 1rem;
+    border-radius: 7px;
+}
+
+.uploadProduct__info__label{
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.uploadProduct__files{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.files__button{
+    color: #fff;
+    font-size: 1.2rem;
+    background: #be17d0c9;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: 1px solid #bf17d0;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.uploadProduct__files__label{
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+/* media queries MOBILE FIRTS */
+
+@media screen and (min-width:576px){
+
+    .uploadProduct__title{
+        text-align: left;
+        margin-left: 0.5rem;
+    }
+}
+
+@media screen and (min-width:768px){
+
+    .uploadProduct__form{
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .uploadProduct__form{
+        align-items: flex-start;
+    }
+
+}

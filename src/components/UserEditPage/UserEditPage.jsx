@@ -50,13 +50,13 @@ const UserEditPage = () => {
         <form className='form' action="#">
 
           <div className='input__field'>
-            <input type={passwordShown ? "text" : "password"} name="password" id="password" placeholder='Nueva Contraseña' />
+            <input type={passwordShown ? "text" : "password"} name="password" id="password" placeholder='Nueva Contraseña' required />
             <FiLock className='field__icon' size={20} />
             <FiEyeOff onClick={togglePassword} className='field__icon-eye' size={20}/>
           </div>
 
           <div className='input__field'>
-            <input type="password" name="password2" id="password2" placeholder='Confirmar Nueva Contraseña' />
+            <input type="password" name="password2" id="password2" placeholder='Confirmar Nueva Contraseña' required />
             <FiLock className='field__icon' size={20} />
           </div>
 

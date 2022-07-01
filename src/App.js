@@ -14,6 +14,7 @@ import PaginaUsuario from "./routes/PaginaUsuario.jsx";
 import PaginaProductosUsuario from "./routes/PaginaProductosUsuario.jsx";
 import PaginaLikesUsuario from "./routes/PaginaLikesUsuario.jsx";
 import PaginaEditarUsuario from "./routes/PaginaEditarUsuario.jsx";
+import SubirProducto from "./routes/SubirProducto.jsx";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/contacto" element={<Contacto/>}/>
         <Route path="/login" element={<InicioSesion/>}/>
         <Route path="/register" element={<Registro/>}/>
+        <Route path="/subirProducto" element={<SubirProducto/>}/>
         <Route path='/paginaProducto/:id' element={<PaginaProducto/>}/> 
         <Route path='/paginaUsuario/:id' element={<PaginaUsuario/>}/> 
         <Route path='/paginaUsuario/editar' element={<PaginaEditarUsuario/>}/> 
