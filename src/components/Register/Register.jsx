@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react'
 import { useState } from 'react';
 import './Register.css'
@@ -6,45 +7,69 @@ import {FiMail} from 'react-icons/fi';
 import {FiLock} from 'react-icons/fi';
 import {FiEyeOff} from 'react-icons/fi';
 import {FiUser} from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
+const endpoint= 'http://127.0.0.1:8000/api/usuario'
 
 const Register = () => {
-    //Toggle para mostrar contraseña 
+    //Variables para el registro
+    const [nombre, setNombre] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    // const [avatar, setAvatar] = useState('NULL');
+    const navigate = useNavigate();
 
+    //Toggle para mostrar contraseña 
     const [passwordShown, setpasswordShown] = useState(false);
     const togglePassword = () =>{
       setpasswordShown(!passwordShown);
+    }
+
+    // Funcion para insertar ususario en la BD 
+    const store = async (e) => {
+      e.preventDefault();
+      await axios.post(endpoint,{nombre : nombre, email : email, password : password, avatar : null})
+      navigate('/');
     }
 
   return (
     <div className='register'>
       <div className='container'>
         <h1>Registro</h1>
-        <form className='form' action="#">
+        <form className='form' onSubmit={store}>
 
           <div className='input__field'>
-            <input type="text" name="name" id="name" placeholder="Nombre" required/>
+            <input type="text" name="name" id="name" placeholder="Nombre" required
+            value={nombre}
+            onChange={(e)=> setNombre(e.target.value)}
+            />
             <FiUser className='field__icon' size={20} />
           </div>
 
           <div className='input__field'>
-            <input type="text" name="email" id="email" placeholder="Email" required/>
+            <input type="text" name="email" id="email" placeholder="Email" required
+            value={email}
+            onChange={(e)=> setEmail(e.target.value)}
+            />
             <FiMail className='field__icon' size={20} />
           </div>
 
           <div className='input__field'>
-            <input type={passwordShown ? "text" : "password"} name="password" id="password" placeholder='Contraseña' required/>
+            <input type={passwordShown ? "text" : "password"} name="password" id="password" placeholder='Contraseña' required
+            value={password}
+            onChange={(e)=> setPassword(e.target.value)}
+            />
             <FiLock className='field__icon' size={20} />
             <FiEyeOff onClick={togglePassword} className='field__icon-eye' size={20}/>
           </div>
 
           <div className='input__field'>
-            <input type="password" name="password2" id="password2" placeholder='Confirmar Contraseña' required/>
+            <input type="password" name="password2" id="password2" placeholder='Confirmar Contraseña' />
             <FiLock className='field__icon' size={20} />
           </div>
 
           <div className='input__field'>
-            <input type="button" className='btn-register' value="Crear Cuenta" required/>
+            <input type='submit' className='btn-register' value="Crear Cuenta" required/>
           </div>
 
           <div className='register__signup'>
