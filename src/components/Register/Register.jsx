@@ -8,8 +8,7 @@ import {FiLock} from 'react-icons/fi';
 import {FiEyeOff} from 'react-icons/fi';
 import {FiUser} from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
-
-const endpoint= 'http://127.0.0.1:8000/api/usuario'
+const endpoint= 'http://127.0.0.1:8000/api/register'
 
 const Register = () => {
     //Variables para el registro
@@ -26,9 +25,9 @@ const Register = () => {
     }
 
     // Funcion para insertar ususario en la BD 
-    const store = async (e) => {
+    const registro = async (e) => {
       e.preventDefault();
-      await axios.post(endpoint,{nombre : nombre, email : email, password : password, avatar : null})
+      await axios.post(endpoint,{nombre : nombre, email : email, password : password});
       navigate('/');
     }
 
@@ -36,8 +35,8 @@ const Register = () => {
     <div className='register'>
       <div className='container'>
         <h1>Registro</h1>
-        <form className='form' onSubmit={store}>
-
+        <form className='form' onSubmit={registro}>
+        
           <div className='input__field'>
             <input type="text" name="name" id="name" placeholder="Nombre" required
             value={nombre}

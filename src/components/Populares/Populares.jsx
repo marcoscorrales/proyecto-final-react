@@ -33,8 +33,8 @@ const Populares = () => {
           (popular.precio > 0 ? precio=`${popular.precio} €` : precio="Gratis")
 
           return <ProductCard 
-          key={popular.cod_modelo} 
-          id={popular.cod_modelo} 
+          key={popular.id} 
+          id={popular.id} 
           imgProduct={product} 
           title={popular.nombre} 
           price={precio} 

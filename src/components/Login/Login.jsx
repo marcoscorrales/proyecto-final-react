@@ -5,9 +5,18 @@ import './Login.css'
 import {FiMail} from 'react-icons/fi';
 import {FiLock} from 'react-icons/fi';
 import {FiEyeOff} from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+const endpoint= 'http://127.0.0.1:8000/api/login'
 
 const Login = () => {
+  //Variables para login
+    const [user, setUser] = useState(null);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
   //Toggle para mostrar contraseña 
 
   const [passwordShown, setpasswordShown] = useState(false);
@@ -15,18 +24,50 @@ const Login = () => {
     setpasswordShown(!passwordShown);
   }
 
+  // Funcion para login ususario 
+  const login = async (e) => {
+    e.preventDefault();
+
+    try{
+      const { data } = await axios.post(endpoint,{email : email, password : password});
+      console.log(data)
+      const user = data.user;
+
+      window.localStorage.setItem(
+        'loggedUser', JSON.stringify(user)
+      )
+      window.localStorage.setItem(
+        'token', JSON.stringify(data.accessToken)      
+      )
+
+      setUser(user);
+      setEmail('');
+      setPassword('');
+      navigate('/');
+    }catch(e){
+      alert('Wrong credentials')
+    }
+    
+  }
+
   return (
     <div className='login'>
       <div className='container'>
         <h1>Login</h1>
-        <form className='form' action="#">
+        <form className='form' onSubmit={login}>
 
           <div className='input__field'>
-            <input type="text" name="email" id="email" placeholder="Email" required/>
+            <input type="text" name="email" id="email" placeholder="Email" required
+             value={email}
+             onChange={(e)=> setEmail(e.target.value)}
+             />
             <FiMail className='field__icon' size={20} />
           </div>
           <div className='input__field'>
-            <input type={passwordShown ? "text" : "password"} name="password" id="password" placeholder='Contraseña' required/>
+            <input type={passwordShown ? "text" : "password"} name="password" id="password" placeholder='Contraseña' required
+            value={password}
+            onChange={(e)=> setPassword(e.target.value)}
+            />
             <FiLock className='field__icon' size={20} />
             <FiEyeOff onClick={togglePassword} className='field__icon-eye' size={20}/>
           </div>
@@ -36,11 +77,11 @@ const Login = () => {
               <input type="checkbox" id="logCheck"/>
               <label htmlFor="logCheck" className='text'>Recordar nombre</label>
             </div>
-            <a href="#" className='text'>Olvidó la contraseña?</a>
+            <a href="/" className='text'>Olvidó la contraseña?</a>
           </div>
 
           <div className='input__field'>
-            <input type="button" className='btn-login' value="Acceder" required/>
+            <input type="submit" className='btn-login' value="Acceder" required/>
           </div>
 
           <div className='login__signup'>
