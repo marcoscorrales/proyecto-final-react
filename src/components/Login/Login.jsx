@@ -7,12 +7,12 @@ import {FiLock} from 'react-icons/fi';
 import {FiEyeOff} from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { setToken } from '../../services/services';;
 
 const endpoint= 'http://127.0.0.1:8000/api/login'
 
 const Login = () => {
   //Variables para login
-    const [user, setUser] = useState(null);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -33,14 +33,16 @@ const Login = () => {
       console.log(data)
       const user = data.user;
 
+      //Añade los datos al local storage
       window.localStorage.setItem(
         'loggedUser', JSON.stringify(user)
       )
       window.localStorage.setItem(
         'token', JSON.stringify(data.accessToken)      
       )
-
-      setUser(user);
+      
+      //Añade token a las llamadas que lo necesitan
+      setToken(data.accessToken);
       setEmail('');
       setPassword('');
       navigate('/');

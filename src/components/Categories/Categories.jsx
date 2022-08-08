@@ -11,25 +11,25 @@ const Categories = () => {
             <div className='categories__card'>
                 <Link to='/categoria'>
                     <img src={category_img} alt="category" className="category__img img-fluid" />
-                    <h4 class="categories__card__title">Categoria</h4>
+                    <h4 className="categories__card__title">Categoria</h4>
                 </Link>
             </div>
             <div className='categories__card'>
                 <Link to='/categoria'>
                     <img src={category_img} alt="category" className="category__img img-fluid" />
-                    <h4 class="categories__card__title">Categoria</h4>
+                    <h4 className="categories__card__title">Categoria</h4>
                 </Link>
             </div>
             <div className='categories__card'>
                 <Link to='/categoria'>
                     <img src={category_img} alt="category" className="category__img img-fluid" />
-                    <h4 class="categories__card__title">Categoria</h4>
+                    <h4 className="categories__card__title">Categoria</h4>
                 </Link>
             </div>
             <div className='categories__card'>
                 <Link to='/categoria'>
                     <img src={category_img} alt="category" className="category__img img-fluid" />
-                    <h4 class="categories__card__title">Categoria</h4>
+                    <h4 className="categories__card__title">Categoria</h4>
                 </Link>
             </div>
         </section>

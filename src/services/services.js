@@ -5,8 +5,20 @@ let token = null;
 
 //Acciones que necesiten un token para ejecutarse
 
-const setToken = newToken =>{
+export const setToken = newToken =>{
     token = `Bearer ${newToken}`
 }
 
-export default {setToken}
+export const logOut = async ()  =>{
+    console.log(token)
+    try {
+        await axios.get(`${endpoint}/logout`,{ headers: { Authorization: token } } );
+    
+        // remove token from local storage
+        localStorage.removeItem( 'token' );
+        localStorage.removeItem( 'loggedUser' );
+      } catch (e) {
+        console.log(e);
+      }
+
+}
