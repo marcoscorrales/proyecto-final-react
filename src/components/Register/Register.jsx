@@ -15,6 +15,7 @@ const Register = () => {
     const [nombre, setNombre] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [password2, setPassword2] = useState('');
     // const [avatar, setAvatar] = useState('NULL');
     const navigate = useNavigate();
 
@@ -27,8 +28,13 @@ const Register = () => {
     // Funcion para insertar ususario en la BD 
     const registro = async (e) => {
       e.preventDefault();
-      await axios.post(endpoint,{nombre : nombre, email : email, password : password});
+      if(password === password2){
+        await axios.post(endpoint,{nombre : nombre, email : email, password : password});
       navigate('/');
+      }else{
+        alert("La contraseña es incorrecta");
+      }
+      
     }
 
   return (
@@ -63,7 +69,10 @@ const Register = () => {
           </div>
 
           <div className='input__field'>
-            <input type="password" name="password2" id="password2" placeholder='Confirmar Contraseña' />
+            <input type="password" name="password2" id="password2" placeholder='Confirmar Contraseña' required
+            value={password2}
+            onChange={(e)=> setPassword2(e.target.value)}
+            />
             <FiLock className='field__icon' size={20} />
           </div>
 

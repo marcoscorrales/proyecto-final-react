@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Home from "./routes/Home.jsx";
 import Comisiones from "./routes/Comisiones";
@@ -25,16 +25,20 @@ function App() {
         <Route path="/categorias" element={<Categorias/>}/>
         <Route path="/categoria" element={<Categoria/>}/>
         <Route path="/contacto" element={<Contacto/>}/>
-        <Route path="/login" element={<InicioSesion/>}/>
-        <Route path="/register" element={<Registro/>}/>
-        <Route path="/subirProducto" element={<SubirProducto/>}/>
         <Route path='/paginaProducto/:id' element={<PaginaProducto/>}/> 
         <Route path='/paginaUsuario/:id' element={<PaginaUsuario/>}/> 
-        <Route path='/paginaUsuario/editar' element={<PaginaEditarUsuario/>}/> 
         <Route path='/paginaProductosUsuario/:id' element={<PaginaProductosUsuario/>}/> 
         <Route path='/paginaLikesUsuario/:id' element={<PaginaLikesUsuario/>}/> 
         <Route path="/terminos" element={<Terminos/>}/>
-      </Routes>
+        {/* Rutas protegidas */}
+
+        <Route path="/login" element={localStorage.getItem('loggedUser') ? <Navigate to="/" replace /> : <InicioSesion /> } />
+        <Route path="/register" element={localStorage.getItem('loggedUser') ? <Navigate to="/" replace /> : <Registro /> } />
+        
+        <Route path='/paginaUsuario/editar' element={localStorage.getItem('loggedUser') ? <PaginaEditarUsuario /> : <Navigate to="/" replace />} />
+
+          <Route path="/subirProducto" element={localStorage.getItem('loggedUser') ? <SubirProducto /> : <Navigate to="/" replace />}/>
+        </Routes>
     </>
   );
 }

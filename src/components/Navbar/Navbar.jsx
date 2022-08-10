@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import {FaBars, FaTimes} from 'react-icons/fa';
 import logo from '../../assets/images/logo3.png' 
 import './Navbar.css'
@@ -8,6 +8,7 @@ import {FiUser} from 'react-icons/fi';
 import {FiLogIn} from 'react-icons/fi';
 import {FiLogOut} from 'react-icons/fi';
 import { logOut } from '../../services/services';
+import { setToken } from '../../services/services';
 
 
 const Navbar = () => {
@@ -15,7 +16,14 @@ const Navbar = () => {
     //Guardar el ususario cada vez que carga el navbar
     useEffect(() =>{
         setloggedUserJSON(localStorage.getItem('loggedUser'));
+        setToken(JSON.parse(localStorage.getItem('token')));
     }, []);
+
+    //Cerrar sesion 
+    const cerrarSesion= () =>{
+        logOut();
+        <Navigate to="/" replace /> 
+    }
 
     //Pintar botones dependiendo de la sesion
     const printButtons= () =>{
@@ -27,7 +35,7 @@ const Navbar = () => {
                     <Link to={'/paginaUsuario/'+JSON.parse(loggedUserJSON).id} className='link link__logo'><FiUser className='header__logo' size={30}/>Usuario</Link>
                     </li>
                     <li>
-                        <Link to='/' onClick={logOut} className='link link__logo'><FiLogOut className='header__logo' size={30}/>Salir</Link>
+                        <Link to='/' onClick={cerrarSesion} className='link link__logo'><FiLogOut className='header__logo' size={30}/>Salir</Link>
                     </li>
                 </>
             )
