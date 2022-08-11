@@ -14,24 +14,12 @@ const ProductPage = () => {
     let producto = (parseInt(parametros.id));
 
     const [modelo, setModelo] = useState([]);
-    const [usuario, setUsuario] = useState([]);
-    const [megustas, setMegustas] = useState([]);
 
     //Devuelve la informacion del modelo
-    const getInfo = async () =>{ 
-  axios.get(`${endpoint}/modelo/${producto}`)
-  .then(response => {
-    setModelo(response.data);
-    return axios.get(`${endpoint}/usuario/${response.data.id_creador}`);
-  })
-  .then(response => {
-    setUsuario(response.data);
-    return axios.get(`${endpoint}/numeromegustas/${producto}`);
-  })
-  .then(response => {
-    setMegustas(response.data);
-  }).catch(error => console.log(error.response));
-}
+    const getInfo = async () =>{
+      const response = await axios.get(`${endpoint}/infomodelo/${producto}`);
+      setModelo(response.data[0]);
+    }
 
     useEffect (()=>{
       getInfo();
@@ -52,7 +40,7 @@ const ProductPage = () => {
           </div>
           <div className='productPage-info__likes'>
             <button className='btn-like'><BsHeartFill/> Me gusta</button>
-            <span className='cifra-likes'><BsHeartFill/> {megustas}</span>
+            <span className='cifra-likes'><BsHeartFill/> {modelo.likes}</span>
           </div>
           <div className='productPage-descripcion'>
             <h3 className='productPage-descripcion__title'>Descripción del modelo</h3>
@@ -66,8 +54,8 @@ const ProductPage = () => {
           <div className='productPage-autor'>
             <h3 className='productPage-autor__title'>Autor</h3>
             <section className='productPage-autor__container'>
-              <Link to={'/paginaUsuario/'+usuario.id}><img src={usuarioimg} className='img-fluid productPage-autor__img' alt="usuario" /></Link>
-            <Link to='/paginaUsuario/1' className='productPage-autor__name'>{usuario.nombre}</Link>
+              <Link to={'/paginaUsuario/'+modelo.id_creador}><img src={usuarioimg} className='img-fluid productPage-autor__img' alt="usuario" /></Link>
+            <Link to={'/paginaUsuario/'+modelo.id_creador} className='productPage-autor__name'>{modelo.nombre_user}</Link>
             </section>
           </div>
         </div>

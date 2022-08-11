@@ -23,6 +23,11 @@
     border: 2px solid #bf17d0;
 }
 
+.category__img{
+    max-height: 100%;
+    width: 100%;
+}
+
 .categories__card__title{
     text-align: center;
     background-color: #fff;
