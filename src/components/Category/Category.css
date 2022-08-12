@@ -18,20 +18,6 @@
     margin-top: 6rem;
 }
 
-.category__nav{
-    font-size: 1.2rem;
-    display: flex;
-    gap: .5rem;
-}
-
-.category__nav span{
-    color: #fff;
-}
-
-.category__nav__text{
-    cursor: pointer;
-}
-
 .category__container{
     display: grid;
     grid-template-columns: 1fr;

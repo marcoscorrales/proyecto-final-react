@@ -9,26 +9,28 @@ import axios from 'axios';
 const endpoint= 'http://127.0.0.1:8000/api'
 
 const ProductPage = () => {
+
     let parametros = useParams();
-   
-    let producto = (parseInt(parametros.id));
 
     const [modelo, setModelo] = useState([]);
+    
+    let producto = (parseInt(parametros.id));
 
-    //Devuelve la informacion del modelo
+    useEffect (()=>{
+
+      //Devuelve la informacion del modelo
     const getInfo = async () =>{
       const response = await axios.get(`${endpoint}/infomodelo/${producto}`);
       setModelo(response.data[0]);
     }
 
-    useEffect (()=>{
       getInfo();
     }, [])
 
   return (
     <div className='productPage'>
         <h1 className='productPage__title'>
-            Producto id:{producto}
+            Producto : {modelo.nombre}
         </h1>
         <div className='productPage-image'>
           <img src={product} className='img-fluid' alt="producto" />
@@ -48,7 +50,7 @@ const ProductPage = () => {
           </div>
           <div className='productPage-categorias'>
             <h3 className='productPage-categorias__title'>Categoria</h3>
-            <section className='productPage-categorias__container'><Link className='productPage-categorias__link' to='/categoria/'>{modelo.categoria}</Link>
+            <section className='productPage-categorias__container'><Link className='productPage-categorias__link' to={'/categoria/'+modelo.categoria}>{modelo.categoria}</Link>
             </section>
           </div>
           <div className='productPage-autor'>

@@ -10,18 +10,19 @@ const endpoint= 'http://127.0.0.1:8000/api'
 
 const Category = () => {
   let parametros = useParams();
-   
-    let categoria = (parametros.nombre);
 
-    const [modelos, setModelos] = useState([]);
+  const [modelos, setModelos] = useState([]);
 
-    //Devuelve la informacion del modelo
-    const getModelos = async () =>{
-      const response = await axios.get(`${endpoint}/categoria/${categoria}`);
-      setModelos(response.data);
-    }
+  let categoria = (parametros.nombre);
 
     useEffect (()=>{
+  
+      //Devuelve la informacion del modelo
+      const getModelos = async () =>{
+        const response = await axios.get(`${endpoint}/categoria/${categoria}`);
+        setModelos(response.data);
+      }
+
       getModelos();
     }, [])
 
@@ -29,13 +30,6 @@ const Category = () => {
     <div className='category'>
       <div className='category__header'>
          <h1 className='category__title'>Categoria: {categoria}</h1>
-        <nav className="category__nav">
-                <span>Ordenar por:</span>
-                <a className="category__nav__text">Descargas 
-                <span className="category__nav__text">↓</span></a>
-                <a className="category__nav__text" >Fecha</a>
-                <a className="category__nav__text">Me gusta</a>
-          </nav>
       </div>
        
             <div className='category__cards'>

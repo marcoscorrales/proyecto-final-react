@@ -12,13 +12,14 @@ const Populares = () => {
 
   const [populares, setPopulares] = useState([]);
 
-    //Devuelve los 4 modelos más populares
+    useEffect (()=>{
+
+      //Devuelve los 4 modelos más populares
     const getPopulares = async () =>{
       const response = await axios.get(`${endpoint}/populares`);
       setPopulares(response.data);
     }
 
-    useEffect (()=>{
       getPopulares();
     }, [])
     
