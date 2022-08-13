@@ -1,15 +1,27 @@
-import React from 'react'
-
+import React, { useRef } from 'react'
+import emailjs from 'emailjs-com'
 import './Contact.css'
 
 import {FiMail} from 'react-icons/fi';
 import {FiUser} from 'react-icons/fi';
 const Contact = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_0vzrk7a', 'template_bh7s10e', form.current, 'zrsqD7fEJCy5oEnfO')
+      .then((result) => {
+          alert(result.text);
+      }, (error) => {
+          alert(error.text);
+      });
+  };
   return (
     <div className='contact'>
       <div className='container2'>
         <h1>Contacto</h1>
-        <form className='form' action="#">
+        <form ref={form} onSubmit={sendEmail}>
 
           <div className='input__field'>
             <input type="text" name="name" id="name" placeholder="Nombre" required/>
@@ -22,11 +34,11 @@ const Contact = () => {
           </div>
 
           <div className='input__textarea'>
-            <textarea placeholder='Mensaje'></textarea>
+            <textarea name='mensaje' placeholder='Mensaje'></textarea>
           </div>
 
           <div className='input__field'>
-            <input type="button" className='btn-contact' value="Enviar" required/>
+            <input type="submit" className='btn-contact' value="Enviar" required/>
           </div>
 
         </form>

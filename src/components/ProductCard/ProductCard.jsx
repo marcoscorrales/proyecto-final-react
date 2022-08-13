@@ -2,7 +2,6 @@ import React from 'react'
 import './ProductCard.css'
 
 import {BsEyeFill} from 'react-icons/bs'
-import {BsHeartFill} from 'react-icons/bs'
 import {BsHeart} from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 
