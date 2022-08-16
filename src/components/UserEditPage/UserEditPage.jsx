@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import './UserEditPage.css'
 
@@ -6,23 +6,63 @@ import {FiMail} from 'react-icons/fi';
 import {FiLock} from 'react-icons/fi';
 import {FiEyeOff} from 'react-icons/fi';
 import {FiUser} from 'react-icons/fi';
+import {FiImage} from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const UserEditPage = () => {
   const endpoint= 'http://127.0.0.1:8000/api/usuario/'+JSON.parse(localStorage.getItem('loggedUser')).id;
+  const endpoint2= 'http://127.0.0.1:8000/api'
+    const [nombre, setNombre] = useState('');
+    const [email, setEmail] = useState('');
+    const [avatar, setAvatar] = useState('');
 
-  const [nombre, setNombre] = useState(JSON.parse(localStorage.getItem('loggedUser')).nombre);
-    const [email, setEmail] = useState(JSON.parse(localStorage.getItem('loggedUser')).email);
+    useEffect (()=>{
+  
+      //Devuelve la informacion del usuario
+      const getInfoUser = async () =>{
+        const response = await axios.get(`${endpoint2}/infouser/${JSON.parse(localStorage.getItem('loggedUser')).id}`);
+        setNombre(response.data[0].nombre)
+        setEmail(response.data[0].email)
+        setAvatar(response.data[0].avatar)
+      }
+
+      getInfoUser();
+    }, [])
+
     // const [password, setPassword] = useState('');
     // const [password2, setPassword2] = useState('');
+
+    const handleChange = (file) =>{
+      setAvatar(file[0]);
+  }
     
   // Funcion para actualizar ususario en la BD 
   const editarUsuario = async (e) => {
     e.preventDefault();
-  
-      const response = await axios.put(endpoint,{nombre : nombre, email : email});
-      console.log(response)
+    const fData = new FormData();
+
+    fData.append("_method", "PUT")
+    fData.append('nombre', nombre);
+    fData.append('email', email);
+    fData.append('avatar', avatar);
+
+    axios({
+        method: "post",
+        url: endpoint,
+        data: fData,
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+        .then(function (response) {
+          //handle success
+          console.log(response);
+          alert("Usuario Actualizado")
+        })
+        .catch(function (response) {
+          //handle error
+          console.log(response);
+        });
+
   }
 
     //Toggle para mostrar contraseña 
@@ -51,6 +91,11 @@ const UserEditPage = () => {
             value={email}
             onChange={(e)=> setEmail(e.target.value)} />
             <FiMail className='field__icon' size={20} />
+          </div>
+
+          <div className='input__field__avatar'>
+            <input type="file" name="avatar" id="avatar" placeholder="Avatar" onChange={e => handleChange(e.target.files)}/>
+            <FiImage className='field__icon' size={20} />
           </div>
 
           <div className='input__field'>

@@ -28,7 +28,6 @@ const Navbar = () => {
     //Pintar botones dependiendo de la sesion
     const printButtons= () =>{
         if(loggedUserJSON){
-            console.log(JSON.parse(loggedUserJSON))
             return(
             <>
                     <li>
