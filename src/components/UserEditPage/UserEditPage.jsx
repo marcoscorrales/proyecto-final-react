@@ -6,12 +6,26 @@ import {FiMail} from 'react-icons/fi';
 import {FiLock} from 'react-icons/fi';
 import {FiEyeOff} from 'react-icons/fi';
 import {FiUser} from 'react-icons/fi';
-import {FiImage} from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const UserEditPage = () => {
-    //Toggle para mostrar contraseña 
+  const endpoint= 'http://127.0.0.1:8000/api/usuario/'+JSON.parse(localStorage.getItem('loggedUser')).id;
 
+  const [nombre, setNombre] = useState(JSON.parse(localStorage.getItem('loggedUser')).nombre);
+    const [email, setEmail] = useState(JSON.parse(localStorage.getItem('loggedUser')).email);
+    // const [password, setPassword] = useState('');
+    // const [password2, setPassword2] = useState('');
+    
+  // Funcion para actualizar ususario en la BD 
+  const editarUsuario = async (e) => {
+    e.preventDefault();
+  
+      const response = await axios.put(endpoint,{nombre : nombre, email : email});
+      console.log(response)
+  }
+
+    //Toggle para mostrar contraseña 
     const [passwordShown, setpasswordShown] = useState(false);
     const togglePassword = () =>{
       setpasswordShown(!passwordShown);
@@ -22,25 +36,25 @@ const UserEditPage = () => {
         <Link to='/subirProducto/' className='btn-UserEditPage'>Subir Modelo</Link>
       <div className='container3'>
         <h1>Editar perfil</h1>
-        <form className='form' action="#">
+        <form className='form' onSubmit={editarUsuario}>
 
           <div className='input__field'>
-            <input type="text" name="name" id="name" placeholder="Nombre" />
+            <input type="text" name="name" id="name" placeholder="Nombre"
+            value={nombre}
+            onChange={(e)=> setNombre(e.target.value)}
+             />
             <FiUser className='field__icon' size={20} />
           </div>
 
           <div className='input__field'>
-            <input type="text" name="email" id="email" placeholder="Email" />
+            <input type="text" name="email" id="email" placeholder="Email" 
+            value={email}
+            onChange={(e)=> setEmail(e.target.value)} />
             <FiMail className='field__icon' size={20} />
           </div>
 
-          <div className='input__field__avatar'>
-            <input type="file" name="avatar" id="avatar" placeholder="Avatar"  />
-            <FiImage className='field__icon' size={20} />
-          </div>
-
           <div className='input__field'>
-            <input type="button" className='btn-UserEditPage' value="Guardar" />
+            <input type="submit" className='btn-UserEditPage' value="Guardar" />
           </div>
 
         </form>
@@ -61,7 +75,7 @@ const UserEditPage = () => {
           </div>
 
           <div className='input__field'>
-            <input type="button" className='btn-UserEditPage' value="Cambiar" />
+            <input type="submit" className='btn-UserEditPage' value="Cambiar" />
           </div>
 
         </form>

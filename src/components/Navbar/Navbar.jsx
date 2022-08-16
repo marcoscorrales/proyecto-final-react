@@ -32,7 +32,7 @@ const Navbar = () => {
             return(
             <>
                     <li>
-                    <Link to={'/paginaUsuario/'+JSON.parse(loggedUserJSON).id} className='link link__logo'><FiUser className='header__logo' size={30}/>Usuario</Link>
+                    <Link to={'/paginaUsuario/editar/'} className='link link__logo'><FiUser className='header__logo' size={30}/>Usuario</Link>
                     </li>
                     <li>
                         <Link to='/' onClick={cerrarSesion} className='link link__logo'><FiLogOut className='header__logo' size={30}/>Salir</Link>

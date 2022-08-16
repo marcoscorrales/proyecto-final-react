@@ -35,7 +35,7 @@ function App() {
         <Route path="/login" element={localStorage.getItem('loggedUser') ? <Navigate to="/" replace /> : <InicioSesion /> } />
         <Route path="/register" element={localStorage.getItem('loggedUser') ? <Navigate to="/" replace /> : <Registro /> } />
         
-        <Route path='/paginaUsuario/editar' element={localStorage.getItem('loggedUser') ? <PaginaEditarUsuario /> : <Navigate to="/" replace />} />
+        <Route path='/paginaUsuario/editar' element={localStorage.getItem('loggedUser') ? <PaginaEditarUsuario/> : <Navigate to="/" replace />} />
 
           <Route path="/subirProducto" element={localStorage.getItem('loggedUser') ? <SubirProducto /> : <Navigate to="/" replace />}/>
         </Routes>

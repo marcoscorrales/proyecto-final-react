@@ -41,7 +41,7 @@ const UserPage = () => {
     <div className='userPage'>
         <h1 className='userPage__title'>Usuario: {userInfo.nombre}</h1>
         <div className='userPage-image'>
-          <img src={usuarioimg} className='img-fluid' alt="usuario" />
+          <img src="http://127.0.0.1:8000/uploads/users/usuario.png" className='img-fluid' alt="usuario" />
           <div className='userPage-image__info'>
             <span>Diseños: {userInfo.diseños}</span>
             <span>Seguidores: {userInfo.seguidores}</span>
