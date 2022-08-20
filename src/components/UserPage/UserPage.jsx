@@ -9,13 +9,17 @@ import axios from 'axios';
 const endpoint= 'http://127.0.0.1:8000/api'
 
 const UserPage = () => {
+  
     let parametros = useParams();
     let usuario = (parseInt(parametros.id));
 
   const [userInfo, setUserInfo] = useState([]);
   const [ultimosModelos, setUltimosModelos] = useState([]);
   const [ultimosLikes, setUltimosLikes] = useState([]);
+  const [seguidores, setSeguidores] = useState([]);
+  const [diseños, setDiseños] = useState([]);
 
+  
 
     useEffect (()=>{
   
@@ -33,10 +37,20 @@ const UserPage = () => {
         const response = await axios.get(`${endpoint}/ultimoslikes/${usuario}`);
         setUltimosLikes(response.data);
       }
+      const getSeguidores = async () =>{
+        const response = await axios.get(`${endpoint}/numeroseguidores/${usuario}`);
+        setSeguidores(response.data);
+      }
+      const getDiseños = async () =>{
+        const response = await axios.get(`${endpoint}/numerodiseños/${usuario}`);
+        setDiseños(response.data);
+      }
 
       getInfoUser();
       getUltimosModelos();
       getUltimosLikes();
+      getSeguidores();
+      getDiseños();
     }, [])
  return (
     <div className='userPage'>
@@ -44,8 +58,8 @@ const UserPage = () => {
         <div className='userPage-image'>
           <img src="http://127.0.0.1:8000/uploads/users/usuario.png" className='img-fluid' alt="usuario" />
           <div className='userPage-image__info'>
-            <span>Diseños: {userInfo.diseños}</span>
-            <span>Seguidores: {userInfo.seguidores}</span>
+            <span>Diseños: {diseños}</span>
+            <span>Seguidores: {seguidores}</span>
             <button>Seguir</button>
           </div>
         </div>

@@ -26,7 +26,7 @@ function App() {
         <Route path="/categoria/:nombre" element={<Categoria/>}/>
         <Route path="/contacto" element={<Contacto/>}/>
         <Route path='/paginaProducto/:id' element={<PaginaProducto/>}/> 
-        <Route path='/paginaUsuario/:id' element={<PaginaUsuario/>}/> 
+        <Route path='/paginaUsuario/:id' element={<PaginaUsuario/>} exact/> 
         <Route path='/paginaProductosUsuario/:id' element={<PaginaProductosUsuario/>}/> 
         <Route path='/paginaLikesUsuario/:id' element={<PaginaLikesUsuario/>}/> 
         <Route path="/terminos" element={<Terminos/>}/>
