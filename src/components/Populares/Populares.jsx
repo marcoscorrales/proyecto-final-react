@@ -41,7 +41,9 @@ const Populares = () => {
           price={precio} 
           likes={popular.likes} 
           imgAuthor={usuario} 
-          author={popular.nombre_user}/> 
+          id_creador={popular.id_creador}
+          author={popular.nombre_user}
+          /> 
         })}
     </div>
 

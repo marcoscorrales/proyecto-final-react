@@ -29,7 +29,7 @@ const Register = () => {
     const registro = async (e) => {
       e.preventDefault();
       if(password === password2){
-        await axios.post(endpoint,{nombre : nombre, email : email, password : password});
+       await axios.post(endpoint,{nombre : nombre, email : email, password : password, avatar: 'usuario.png'});
       navigate('/');
       }else{
         alert("La contraseña es incorrecta");

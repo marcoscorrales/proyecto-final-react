@@ -33,7 +33,7 @@ const ProductCard = (prop) => {
             <img src={prop.imgAuthor} className='productCard-author-img__img' alt="imagen autor" />
           </div>
           <h5 className='productCard-author-text'>
-            Creado por <Link to="/paginaUsuario/1" className='highlight'>{prop.author}</Link>
+            Creado por <Link to={'/paginaUsuario/'+prop.id_creador} className='highlight'>{prop.author}</Link>
           </h5>
         </div>
     </div>

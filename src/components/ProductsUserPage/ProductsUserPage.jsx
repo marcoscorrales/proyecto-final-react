@@ -40,7 +40,7 @@ const ProductsUserPage = () => {
                   let precio = 0;
                   (modelo.precio > 0 ? precio=`${modelo.precio} €` : precio="Gratis");
 
-                  return <ProductCard key={modelo.id} id={modelo.id} imgProduct={product} title={modelo.nombre} price={precio} likes={modelo.likes} imgAuthor={usuarioimg} author={modelo.nombre_user}/> 
+                  return <ProductCard key={modelo.id} id={modelo.id} imgProduct={product} title={modelo.nombre} price={precio} likes={modelo.likes} imgAuthor={usuarioimg} id_creador={modelo.id_creador} author={modelo.nombre_user}/> 
                 })}
         </section>
     </div>

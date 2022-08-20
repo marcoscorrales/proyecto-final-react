@@ -21,10 +21,10 @@ const UserEditPage = () => {
   
       //Devuelve la informacion del usuario
       const getInfoUser = async () =>{
-        const response = await axios.get(`${endpoint2}/infouser/${JSON.parse(localStorage.getItem('loggedUser')).id}`);
-        setNombre(response.data[0].nombre)
-        setEmail(response.data[0].email)
-        setAvatar(response.data[0].avatar)
+        const response = await axios.get(`${endpoint2}/usuario/${JSON.parse(localStorage.getItem('loggedUser')).id}`);
+        setNombre(response.data.nombre)
+        setEmail(response.data.email)
+        setAvatar(response.data.avatar)
       }
 
       getInfoUser();

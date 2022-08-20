@@ -74,14 +74,6 @@ const Login = () => {
             <FiEyeOff onClick={togglePassword} className='field__icon-eye' size={20}/>
           </div>
 
-          <div className="checkbox-text">
-            <div className="checkbox-content">
-              <input type="checkbox" id="logCheck"/>
-              <label htmlFor="logCheck" className='text'>Recordar nombre</label>
-            </div>
-            <a href="/" className='text'>Olvidó la contraseña?</a>
-          </div>
-
           <div className='input__field'>
             <input type="submit" className='btn-login' value="Acceder" required/>
           </div>
