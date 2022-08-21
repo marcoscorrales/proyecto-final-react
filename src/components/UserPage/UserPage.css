@@ -34,13 +34,14 @@
     font-size: 1.2rem;
 }
 
-.userPage-image__info button{
+.userPage-image__info .button__seguir{
     color: #fff;
     font-size: 1.2rem;
     background: #be17d0c9;
     color: #fff;
     border: 1px solid #bf17d0;
     cursor: pointer;
+    text-align: center
 }
 
 .userPage-modelos__title, .userPage-likes__title{

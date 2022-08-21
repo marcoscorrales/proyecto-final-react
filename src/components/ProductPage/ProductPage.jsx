@@ -12,20 +12,62 @@ const ProductPage = () => {
 
     let parametros = useParams();
 
+    const [loggedUserJSON, setloggedUserJSON] = useState(null);
     const [modelo, setModelo] = useState([]);
+    const [likes, setLikes] = useState([]);
     
     let producto = (parseInt(parametros.id));
 
     useEffect (()=>{
+      setloggedUserJSON(localStorage.getItem('loggedUser'));
 
       //Devuelve la informacion del modelo
     const getInfo = async () =>{
       const response = await axios.get(`${endpoint}/infomodelo/${producto}`);
       setModelo(response.data[0]);
+      setLikes(response.data[0].likes)
     }
 
       getInfo();
     }, [])
+
+    const megusta = async () =>{
+      try {
+        let result = await axios.post(          
+          `${endpoint}/megusta/`,         
+          {                                     
+            cod_usuario : JSON.parse(localStorage.getItem('loggedUser')).id, 
+            id_modelo : modelo.id
+          }
+        );
+        console.log(result);
+        setLikes(likes+1);
+      } catch (error) {
+        console.error(error.response.data);     
+      }
+
+    }
+  
+    const quitarMegusta = async () =>{
+      const response = await axios.delete(`${endpoint}/megusta/${JSON.parse(localStorage.getItem('loggedUser')).id}/${modelo.id}`);
+      console.log(response);
+    }
+
+    const printButtons= () =>{
+      if(loggedUserJSON){
+          return(
+          <>
+                  <button className='btn-like' onClick={() => megusta()}><BsHeartFill/> Megusta</button>
+              </>
+          )
+      }else{
+          return(
+              <>
+                  <Link to="/login" className='btn-like'><BsHeartFill/> Megusta</Link>
+              </>
+          )
+      }
+  }
 
   return (
     <div className='productPage'>
@@ -41,8 +83,8 @@ const ProductPage = () => {
             <span className='precio-descarga'>{modelo.precio > 0 ? modelo.precio +"€" : "Gratis"}</span>
           </div>
           <div className='productPage-info__likes'>
-            <button className='btn-like'><BsHeartFill/> Me gusta</button>
-            <span className='cifra-likes'><BsHeartFill/> {modelo.likes}</span>
+            {printButtons()}
+            <span className='cifra-likes'><BsHeartFill/> {likes}</span>
           </div>
           <div className='productPage-descripcion'>
             <h3 className='productPage-descripcion__title'>Descripción del modelo</h3>

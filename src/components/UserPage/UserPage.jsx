@@ -9,6 +9,12 @@ import axios from 'axios';
 const endpoint= 'http://127.0.0.1:8000/api'
 
 const UserPage = () => {
+
+  const [loggedUserJSON, setloggedUserJSON] = useState(null);
+
+    useEffect(() =>{
+        setloggedUserJSON(localStorage.getItem('loggedUser'));
+    }, []);
   
     let parametros = useParams();
     let usuario = (parseInt(parametros.id));
@@ -19,6 +25,15 @@ const UserPage = () => {
   const [seguidores, setSeguidores] = useState([]);
   const [diseños, setDiseños] = useState([]);
 
+  const follow = async () =>{
+    const response = await axios.post(`${endpoint}/seguimiento`,{ id_user : JSON.parse(localStorage.getItem('loggedUser')).id, id_user_seguido : userInfo.id});
+    console.log(response);
+  }
+
+  const unFollow = async () =>{
+    const response = await axios.delete(`${endpoint}/seguimiento/${JSON.parse(localStorage.getItem('loggedUser')).id}/${userInfo.id}`);
+    console.log(response);
+  }
   
 
     useEffect (()=>{
@@ -52,6 +67,22 @@ const UserPage = () => {
       getSeguidores();
       getDiseños();
     }, [])
+
+    const printButtons= () =>{
+      if(loggedUserJSON){
+          return(
+          <>
+                  <button className='button__seguir' onClick={() => follow()}>Seguir</button>
+              </>
+          )
+      }else{
+          return(
+              <>
+                  <Link to="/login" className='button__seguir'>Seguir</Link>
+              </>
+          )
+      }
+  }
  return (
     <div className='userPage'>
         <h1 className='userPage__title'>Usuario: {userInfo.nombre}</h1>
@@ -60,7 +91,11 @@ const UserPage = () => {
           <div className='userPage-image__info'>
             <span>Diseños: {diseños}</span>
             <span>Seguidores: {seguidores}</span>
-            <button>Seguir</button>
+
+            {
+              printButtons()
+            }
+            
           </div>
         </div>
 
