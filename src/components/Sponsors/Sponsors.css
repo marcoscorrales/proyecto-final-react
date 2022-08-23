@@ -18,6 +18,12 @@
     display: none;
 }
 
+.sponsor__img{
+    width: 100%;
+    height: 100%;
+}
+
+
 /* media queries MOBILE FIRTS */
 
 @media screen and (min-width:576px){
