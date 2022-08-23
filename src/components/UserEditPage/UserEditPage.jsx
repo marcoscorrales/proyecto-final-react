@@ -8,6 +8,7 @@ import {FiEyeOff} from 'react-icons/fi';
 import {FiUser} from 'react-icons/fi';
 import {FiImage} from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import { changePassword } from '../../services/services';
 import axios from 'axios';
 
 const UserEditPage = () => {
@@ -16,6 +17,9 @@ const UserEditPage = () => {
     const [nombre, setNombre] = useState('');
     const [email, setEmail] = useState('');
     const [avatar, setAvatar] = useState('');
+
+    const [password, setPassword] = useState('');
+    const [password2, setPassword2] = useState('');
 
     useEffect (()=>{
   
@@ -29,9 +33,6 @@ const UserEditPage = () => {
 
       getInfoUser();
     }, [])
-
-    // const [password, setPassword] = useState('');
-    // const [password2, setPassword2] = useState('');
 
     const handleChange = (file) =>{
       setAvatar(file[0]);
@@ -64,6 +65,13 @@ const UserEditPage = () => {
         });
 
   }
+
+  const resetPassword= (e) =>{
+    e.preventDefault();
+
+    changePassword(password,password2)
+  }
+    
 
     //Toggle para mostrar contraseña 
     const [passwordShown, setpasswordShown] = useState(false);
@@ -106,16 +114,18 @@ const UserEditPage = () => {
 
         <h2>Cambiar contraseña</h2>
 
-        <form className='form' action="#">
+        <form className='form' onSubmit={resetPassword}>
 
           <div className='input__field'>
-            <input type={passwordShown ? "text" : "password"} name="password" id="password" placeholder='Nueva Contraseña' required />
+            <input type={passwordShown ? "text" : "password"} name="password" id="password" placeholder='Nueva Contraseña' required value={password}
+            onChange={(e)=> setPassword(e.target.value)}/>
             <FiLock className='field__icon' size={20} />
             <FiEyeOff onClick={togglePassword} className='field__icon-eye' size={20}/>
           </div>
 
           <div className='input__field'>
-            <input type="password" name="password2" id="password2" placeholder='Confirmar Nueva Contraseña' required />
+            <input type="password" name="password2" id="password2" placeholder='Confirmar Nueva Contraseña' required value={password2}
+            onChange={(e)=> setPassword2(e.target.value)}/>
             <FiLock className='field__icon' size={20} />
           </div>
 

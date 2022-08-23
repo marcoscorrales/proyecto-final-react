@@ -10,7 +10,6 @@ export const setToken = newToken =>{
 }
 
 export const logOut = async ()  =>{
-    console.log(token)
     try {
         await axios.get(`${endpoint}/logout`,{ headers: { Authorization: token } } );
     
@@ -19,6 +18,20 @@ export const logOut = async ()  =>{
         localStorage.removeItem( 'loggedUser' );
       } catch (e) {
         console.log(e);
+      }
+
+}
+
+export const changePassword = async (password, confirm_password)  =>{
+    try {
+        const request = await axios.post(`${endpoint}/change-password`,{password: password, confirm_password: confirm_password},{ headers: { Authorization: token }} );
+
+        console.log(request);
+
+        alert(request.data.message)
+
+      } catch (e) {
+        alert(e);
       }
 
 }

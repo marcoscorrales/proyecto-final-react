@@ -11,9 +11,12 @@ const UploadProduct = () => {
     const [precio, setPrecio] = useState('');
     const [categoria, setCategoria] = useState('');
     const [imagen, setImagen] = useState('');
-    // const [archivo, setArchivo] = useState('');
+    const [archivo, setArchivo] = useState('');
 
     const handleChange = (file) =>{
+        setArchivo(file[0]);
+    }
+    const handleChange2 = (file) =>{
         setImagen(file[0]);
     }
 
@@ -26,22 +29,31 @@ const UploadProduct = () => {
         fData.append('id_creador', JSON.parse(localStorage.getItem('loggedUser')).id);
         fData.append('precio', precio);
         fData.append('categoria', categoria);
-        fData.append('imagen', imagen);
+        fData.append('archivo', archivo); 
+        fData.append('imagen', imagen); 
 
-        axios({
-            method: "post",
-            url: endpoint,
-            data: fData,
-            headers: { "Content-Type": "multipart/form-data" },
-          })
-            .then(function (response) {
-              //handle success
-              console.log(response);
-            })
-            .catch(function (response) {
-              //handle error
-              console.log(response);
-            });
+        if(precio >= 0){
+            axios({
+                method: "post",
+                url: endpoint,
+                data: fData,
+                headers: { "Content-Type": "multipart/form-data" },
+              })
+                .then(function (response) {
+                  //handle success
+                  alert("Modelo subido")
+                  console.log(response);
+                })
+                .catch(function (response) {
+                  //handle error
+                  alert("Error al subir modelo")
+                  console.log(response);
+                });
+        }else{
+            alert("Precio incorrecto");
+        }
+
+        
 
       }
 
@@ -65,7 +77,7 @@ const UploadProduct = () => {
             </textarea>
             </div>
             <div className='uploadProduct__info__field'>
-                <label className='uploadProduct__info__label' htmlFor="precio">Precio</label><input type="number" name="precio" required  id="precio" 
+                <label className='uploadProduct__info__label' htmlFor="precio">Precio</label><input type="number" name="precio" min={0} max={999} required  id="precio" 
                 value={precio}
             onChange={(e)=> setPrecio(e.target.value)}
             />
@@ -87,12 +99,12 @@ const UploadProduct = () => {
 
         <section className='uploadProduct__files'>
             <div>
-                <label className='uploadProduct__files__label' htmlFor="archivo">Archivo</label>
-                <input className='form-control' type="file" name="archivo" id="archivo" />
+                <label className='uploadProduct__files__label' htmlFor="archivo">Archivo (STL Recomendable)</label>
+                <input className='form-control' type="file" name="archivo" id="archivo" required onChange={e => handleChange(e.target.files)} />
             </div>
             <div>
                 <label className='uploadProduct__files__label' htmlFor="foto">Foto</label>
-                <input className='form-control' type="file" name="foto" id="foto" onChange={e => handleChange(e.target.files)}/>
+                <input className='form-control' type="file" name="foto" id="foto" required onChange={e => handleChange2(e.target.files)}/>
             </div>
             <div>
                 <input className='files__button' type="submit" value="Enviar" />
