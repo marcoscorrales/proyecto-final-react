@@ -2,11 +2,11 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react'
 import './Populares.css'
 import {BsHeartFill} from 'react-icons/bs'
-import product from '../../assets/images/sponsor1.jpg'
-import usuario from '../../assets/images/usuario.png'
 import ProductCard from '../ProductCard/ProductCard'
 
 const endpoint= 'http://127.0.0.1:8000/api'
+const endpointUserImage= 'http://127.0.0.1:8000/uploads/users/'
+const endpointModelImage= 'http://127.0.0.1:8000/uploads/imagemodels/'
 
 const Populares = () => {
 
@@ -36,11 +36,11 @@ const Populares = () => {
           return <ProductCard 
           key={popular.id} 
           id={popular.id} 
-          imgProduct={product} 
+          imgProduct={endpointModelImage+popular.imagen} 
           title={popular.nombre} 
           price={precio} 
           likes={popular.likes} 
-          imgAuthor={usuario} 
+          imgAuthor={endpointUserImage+popular.avatar} 
           id_creador={popular.id_creador}
           author={popular.nombre_user}
           /> 

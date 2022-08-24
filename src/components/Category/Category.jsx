@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import ProductCard from '../ProductCard/ProductCard'
 import './Category.css'
-import usuarioimg from '../../assets/images/usuario.png'
-import product from '../../assets/images/sponsor1.jpg'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 
 const endpoint= 'http://127.0.0.1:8000/api'
+const endpointUserImage= 'http://127.0.0.1:8000/uploads/users/'
+const endpointModelImage= 'http://127.0.0.1:8000/uploads/imagemodels/'
 
 const Category = () => {
   let parametros = useParams();
@@ -38,7 +38,7 @@ const Category = () => {
                   let precio = 0;
                   (modelo.precio > 0 ? precio=`${modelo.precio} €` : precio="Gratis");
 
-                  return <ProductCard key={modelo.id} id={modelo.id} imgProduct={product} title={modelo.nombre} price={precio} likes={modelo.likes} imgAuthor={usuarioimg} id_creador={modelo.id_creador} author={modelo.nombre_user}/> 
+                  return <ProductCard key={modelo.id} id={modelo.id} imgProduct={endpointModelImage+modelo.imagen} title={modelo.nombre} price={precio} likes={modelo.likes} imgAuthor={endpointUserImage+modelo.avatar} id_creador={modelo.id_creador} author={modelo.nombre_user}/> 
                 })}
                 </div>
             </div>

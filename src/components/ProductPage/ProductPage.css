@@ -101,6 +101,7 @@
 
 .productPage-autor__img{
     border-radius: 50%;
+    max-width: 300px;
 }
 
 .productPage-autor__name{

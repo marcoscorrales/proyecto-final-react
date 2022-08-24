@@ -23,6 +23,11 @@
     gap: 2rem;
 }
 
+.userPage-image img{
+    border-radius: 50%;
+    max-width: 250px;
+}
+
 .userPage-image__info{
     display: flex;
     flex-direction: column;

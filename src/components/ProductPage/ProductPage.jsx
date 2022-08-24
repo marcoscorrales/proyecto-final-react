@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link,useParams } from 'react-router-dom';
 import './ProductPage.css';
-import product from '../../assets/images/sponsor1.jpg'
-import usuarioimg from '../../assets/images/usuario.png'
 import {BsHeartFill} from 'react-icons/bs'
 import axios from 'axios';
 
 const endpoint= 'http://127.0.0.1:8000/api'
+const endpointUserImage= 'http://127.0.0.1:8000/uploads/users/'
+const endpointModelImage= 'http://127.0.0.1:8000/uploads/imagemodels/'
 
 const ProductPage = () => {
 
@@ -75,7 +75,7 @@ const ProductPage = () => {
             Producto : {modelo.nombre}
         </h1>
         <div className='productPage-image'>
-          <img src={product} className='img-fluid' alt="producto" />
+          <img src={endpointModelImage+modelo.imagen} className='img-fluid' alt="producto" />
         </div>
         <div className='productPage-info'>
           <div className='productPage-info__buttons'>
@@ -98,7 +98,7 @@ const ProductPage = () => {
           <div className='productPage-autor'>
             <h3 className='productPage-autor__title'>Autor</h3>
             <section className='productPage-autor__container'>
-              <Link to={'/paginaUsuario/'+modelo.id_creador}><img src={usuarioimg} className='img-fluid productPage-autor__img' alt="usuario" /></Link>
+              <Link to={'/paginaUsuario/'+modelo.id_creador}><img src={endpointUserImage+modelo.avatar} className='img-fluid productPage-autor__img' alt="usuario" /></Link>
             <Link to={'/paginaUsuario/'+modelo.id_creador} className='productPage-autor__name'>{modelo.nombre_user}</Link>
             </section>
           </div>
