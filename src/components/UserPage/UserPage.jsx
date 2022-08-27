@@ -27,12 +27,10 @@ const UserPage = () => {
 
   const follow = async () =>{
     const response = await axios.post(`${endpoint}/seguimiento`,{ id_user : JSON.parse(localStorage.getItem('loggedUser')).id, id_user_seguido : userInfo.id});
-    console.log(response);
   }
 
   const unFollow = async () =>{
     const response = await axios.delete(`${endpoint}/seguimiento/${JSON.parse(localStorage.getItem('loggedUser')).id}/${userInfo.id}`);
-    console.log(response);
   }
   
 
@@ -42,7 +40,6 @@ const UserPage = () => {
       const getInfoUser = async () =>{
         const response = await axios.get(`${endpoint}/infouser/${usuario}`);
         setUserInfo(response.data[0]);
-        console.log(response.data[0])
       }
       const getUltimosModelos = async () =>{
         const response = await axios.get(`${endpoint}/ultimosmodelos/${usuario}`);

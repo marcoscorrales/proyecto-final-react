@@ -7,14 +7,16 @@ import axios from 'axios';
 const endpoint= 'http://127.0.0.1:8000/api'
 const endpointUserImage= 'http://127.0.0.1:8000/uploads/users/'
 const endpointModelImage= 'http://127.0.0.1:8000/uploads/imagemodels/'
+const endpointDownload= 'http://127.0.0.1:8000/uploads/filesmodels/'
 
 const ProductPage = () => {
 
     let parametros = useParams();
 
     const [loggedUserJSON, setloggedUserJSON] = useState(null);
-    const [modelo, setModelo] = useState([]);
-    const [likes, setLikes] = useState([]);
+    const [modelo, setModelo] = useState('');
+    const [likes, setLikes] = useState('');
+    const [archivo, setArchivo] = useState('');
     
     let producto = (parseInt(parametros.id));
 
@@ -26,6 +28,7 @@ const ProductPage = () => {
       const response = await axios.get(`${endpoint}/infomodelo/${producto}`);
       setModelo(response.data[0]);
       setLikes(response.data[0].likes)
+      setArchivo(response.data[0].archivo)
     }
 
       getInfo();
@@ -50,7 +53,6 @@ const ProductPage = () => {
   
     const quitarMegusta = async () =>{
       const response = await axios.delete(`${endpoint}/megusta/${JSON.parse(localStorage.getItem('loggedUser')).id}/${modelo.id}`);
-      console.log(response);
     }
 
     const printButtons= () =>{
@@ -79,7 +81,11 @@ const ProductPage = () => {
         </div>
         <div className='productPage-info'>
           <div className='productPage-info__buttons'>
+
+          <a href={endpointDownload+archivo} className="link-descarga" target="_blank" rel="noopener noreferrer" download>
             <button className='btn-descargar'>Descargar</button>
+            </a>
+
             <span className='precio-descarga'>{modelo.precio > 0 ? modelo.precio +"€" : "Gratis"}</span>
           </div>
           <div className='productPage-info__likes'>

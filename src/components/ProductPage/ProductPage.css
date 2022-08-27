@@ -30,6 +30,10 @@
     cursor: pointer;
 }
 
+.link-descarga{
+    display: flex;
+}
+
 .btn-like{
     padding: 12px 32px;
     font-size: 1.2rem;
