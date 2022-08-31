@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link,useParams } from 'react-router-dom';
 import './ProductPage.css';
 import {BsHeartFill} from 'react-icons/bs'
+import {BsHeart} from 'react-icons/bs'
 import axios from 'axios';
 
 const endpoint= 'http://127.0.0.1:8000/api'
@@ -16,7 +17,9 @@ const ProductPage = () => {
     const [loggedUserJSON, setloggedUserJSON] = useState(null);
     const [modelo, setModelo] = useState('');
     const [likes, setLikes] = useState('');
+    const [like, setLike] = useState('');
     const [archivo, setArchivo] = useState('');
+    
     
     let producto = (parseInt(parametros.id));
 
@@ -30,42 +33,60 @@ const ProductPage = () => {
       setLikes(response.data[0].likes)
       setArchivo(response.data[0].archivo)
     }
-
-      getInfo();
-    }, [])
-
-    const megusta = async () =>{
+    //Ver si el usuario ha dado megusta
+    const vermegusta = async () =>{
       try {
-        let result = await axios.post(          
-          `${endpoint}/megusta/`,         
-          {                                     
-            cod_usuario : JSON.parse(localStorage.getItem('loggedUser')).id, 
-            id_modelo : modelo.id
-          }
+        let result = await axios.get(`${endpoint}/verlike/${producto}`,{ headers: { Authorization: 'Bearer '+JSON.parse(localStorage.getItem('token')) }}
         );
         console.log(result);
-        setLikes(likes+1);
+        if(result.data===1){
+          setLike("activo")
+        }else{
+          setLike("inactivo")
+        }
+        
       } catch (error) {
         console.error(error.response.data);     
       }
 
     }
-  
-    const quitarMegusta = async () =>{
-      const response = await axios.delete(`${endpoint}/megusta/${JSON.parse(localStorage.getItem('loggedUser')).id}/${modelo.id}`);
+
+      getInfo();
+      vermegusta();
+    }, [])
+
+    const megusta = async () =>{
+      try {
+        let result = await axios.get(          
+          `${endpoint}/like/${modelo.id}`,
+          { headers: { Authorization: 'Bearer '+JSON.parse(localStorage.getItem('token')) }});
+        console.log(result);
+        if(like==='activo'){
+            setLikes(likes-1)
+            setLike("inactivo")
+        }else{
+          setLikes(likes+1)
+          setLike("activo")
+        }
+        // setLikes(likes+1);
+      } catch (error) {
+        console.error(error.response.data);     
+      }
+
     }
 
     const printButtons= () =>{
+      console.log(like)
       if(loggedUserJSON){
           return(
           <>
-                  <button className='btn-like' onClick={() => megusta()}><BsHeartFill/> Megusta</button>
+                  <button className='btn-like' onClick={() => megusta()}><BsHeartFill className={like}/> Megusta</button>
               </>
           )
       }else{
           return(
               <>
-                  <Link to="/login" className='btn-like'><BsHeartFill/> Megusta</Link>
+                  <Link to="/login" className='btn-like'><BsHeartFill className={like}/> Megusta</Link>
               </>
           )
       }
