@@ -68,7 +68,6 @@ const ProductPage = () => {
           setLikes(likes+1)
           setLike("activo")
         }
-        // setLikes(likes+1);
       } catch (error) {
         console.error(error.response.data);     
       }

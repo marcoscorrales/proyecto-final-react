@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './UserPage.css'
 import { Link, useParams } from 'react-router-dom';
 import ProductCard from '../ProductCard/ProductCard'
+import {BsCheck} from 'react-icons/bs'
 import axios from 'axios';
 
 const endpoint= 'http://127.0.0.1:8000/api'
@@ -24,16 +25,8 @@ const UserPage = () => {
   const [ultimosLikes, setUltimosLikes] = useState([]);
   const [seguidores, setSeguidores] = useState([]);
   const [diseños, setDiseños] = useState([]);
-
-  const follow = async () =>{
-    const response = await axios.post(`${endpoint}/seguimiento`,{ id_user : JSON.parse(localStorage.getItem('loggedUser')).id, id_user_seguido : userInfo.id});
-  }
-
-  const unFollow = async () =>{
-    const response = await axios.delete(`${endpoint}/seguimiento/${JSON.parse(localStorage.getItem('loggedUser')).id}/${userInfo.id}`);
-  }
+  const [follow, setFollow] = useState('');
   
-
     useEffect (()=>{
   
       //Devuelve la informacion del usuario
@@ -57,19 +50,56 @@ const UserPage = () => {
         const response = await axios.get(`${endpoint}/numerodiseños/${usuario}`);
         setDiseños(response.data);
       }
+      //Ver si el usuario ha dado seguir
+    const verSeguimiento = async () =>{
+      try {
+        let result = await axios.get(`${endpoint}/verseguimiento/${usuario}`,{ headers: { Authorization: 'Bearer '+JSON.parse(localStorage.getItem('token')) }}
+        );
+        console.log(result);
+        if(result.data===1){
+          setFollow("seguido")
+        }else{
+          setFollow("seguir")
+        }
+        
+      } catch (error) {
+        console.error(error.response.data);     
+      }
+
+    }
 
       getInfoUser();
       getUltimosModelos();
       getUltimosLikes();
       getSeguidores();
       getDiseños();
+      verSeguimiento();
     }, [])
+
+    const seguir = async () =>{
+      try {
+        let result = await axios.get(          
+          `${endpoint}/follow/${usuario}`,
+          { headers: { Authorization: 'Bearer '+JSON.parse(localStorage.getItem('token')) }});
+        console.log(result);
+        if(follow==='seguir'){
+            setSeguidores(seguidores+1)
+            setFollow("seguido")
+        }else{
+          setSeguidores(seguidores-1)
+          setFollow("seguir")
+        }
+      } catch (error) {
+        console.error(error.response.data);     
+      }
+
+    }
 
     const printButtons= () =>{
       if(loggedUserJSON){
           return(
           <>
-                  <button className='button__seguir' onClick={() => follow()}>Seguir</button>
+                  <button className='button__seguir' onClick={() => seguir()}><BsCheck size={22} className={follow}/>{follow}</button>
               </>
           )
       }else{

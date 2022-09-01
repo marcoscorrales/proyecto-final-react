@@ -46,7 +46,10 @@
     color: #fff;
     border: 1px solid #bf17d0;
     cursor: pointer;
-    text-align: center
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .userPage-modelos__title, .userPage-likes__title{
@@ -67,6 +70,14 @@
     text-decoration: underline;
     color: #bf17d0;
     font-size: 1.5rem;
+}
+
+.seguido{
+    display: block;
+}
+
+.seguir{
+    display: none;
 }
 /* media queries MOBILE FIRTS */
 
