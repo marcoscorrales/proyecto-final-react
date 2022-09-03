@@ -22,7 +22,7 @@ const Navbar = () => {
     //Cerrar sesion 
     const cerrarSesion= () =>{
         logOut();
-        <Navigate to="/" replace /> 
+        // <Navigate to="/" replace /> 
     }
 
     //Pintar botones dependiendo de la sesion
@@ -34,7 +34,7 @@ const Navbar = () => {
                     <Link to={'/paginaUsuario/editar/'} className='link link__logo'><FiUser className='header__logo' size={30}/>Usuario</Link>
                     </li>
                     <li>
-                        <Link to='/' onClick={cerrarSesion} className='link link__logo'><FiLogOut className='header__logo' size={30}/>Salir</Link>
+                        <Link to='#' onClick={cerrarSesion} className='link link__logo'><FiLogOut className='header__logo' size={30}/>Salir</Link>
                     </li>
                 </>
             )

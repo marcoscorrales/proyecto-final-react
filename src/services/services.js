@@ -16,6 +16,7 @@ export const logOut = async ()  =>{
         // remove token from local storage
         localStorage.removeItem( 'token' );
         localStorage.removeItem( 'loggedUser' );
+        window.location.reload();
       } catch (e) {
         console.log(e);
       }
