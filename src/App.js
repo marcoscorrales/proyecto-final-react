@@ -15,6 +15,7 @@ import PaginaProductosUsuario from "./routes/PaginaProductosUsuario.jsx";
 import PaginaLikesUsuario from "./routes/PaginaLikesUsuario.jsx";
 import PaginaEditarUsuario from "./routes/PaginaEditarUsuario.jsx";
 import SubirProducto from "./routes/SubirProducto.jsx";
+import PaginaEliminarProductos from "./routes/PaginaEliminarProductos.jsx";
 
 function App() {
   return (
@@ -37,7 +38,9 @@ function App() {
         
         <Route path='/paginaUsuario/editar' element={localStorage.getItem('loggedUser') ? <PaginaEditarUsuario/> : <Navigate to="/" replace />} />
 
-          <Route path="/subirProducto" element={localStorage.getItem('loggedUser') ? <SubirProducto /> : <Navigate to="/" replace />}/>
+        <Route path='/paginaEliminarProductos' element={localStorage.getItem('loggedUser') ? <PaginaEliminarProductos/> : <Navigate to="/" replace />} />
+
+        <Route path="/subirProducto" element={localStorage.getItem('loggedUser') ? <SubirProducto /> : <Navigate to="/" replace />}/>
         </Routes>
     </>
   );

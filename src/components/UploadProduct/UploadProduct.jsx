@@ -9,7 +9,7 @@ const UploadProduct = () => {
     const [nombre, setNombre] = useState('');
     const [descripcion, setDescripcion] = useState('');
     const [precio, setPrecio] = useState('');
-    const [categoria, setCategoria] = useState('');
+    const [categoria, setCategoria] = useState('Arte');
     const [imagen, setImagen] = useState('');
     const [archivo, setArchivo] = useState('');
 

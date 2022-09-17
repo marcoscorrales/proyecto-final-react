@@ -46,6 +46,7 @@ const Login = () => {
       setEmail('');
       setPassword('');
       navigate('/');
+      window.location.reload();
     }catch(e){
       alert('Wrong credentials')
     }

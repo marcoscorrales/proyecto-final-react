@@ -82,6 +82,7 @@ const UserEditPage = () => {
   return (
     <div className='UserEditPage'>
         <Link to='/subirProducto/' className='btn-UserEditPage'>Subir Modelo</Link>
+        <Link to='/paginaEliminarProductos/' className='btn-UserEditPage'>Eliminar Modelos</Link>
       <div className='container3'>
         <h1>Editar perfil</h1>
         <form className='form' onSubmit={editarUsuario}>
