@@ -33,14 +33,14 @@ function App() {
         <Route path="/terminos" element={<Terminos/>}/>
         {/* Rutas protegidas */}
 
-        <Route path="/login" element={localStorage.getItem('loggedUser') ? <Navigate to="/" replace /> : <InicioSesion /> } />
-        <Route path="/register" element={localStorage.getItem('loggedUser') ? <Navigate to="/" replace /> : <Registro /> } />
+        <Route path="/login" element={sessionStorage.getItem('loggedUser') ? <Navigate to="/" replace /> : <InicioSesion /> } />
+        <Route path="/register" element={sessionStorage.getItem('loggedUser') ? <Navigate to="/" replace /> : <Registro /> } />
         
-        <Route path='/paginaUsuario/editar' element={localStorage.getItem('loggedUser') ? <PaginaEditarUsuario/> : <Navigate to="/" replace />} />
+        <Route path='/paginaUsuario/editar' element={sessionStorage.getItem('loggedUser') ? <PaginaEditarUsuario/> : <Navigate to="/" replace />} />
 
-        <Route path='/paginaEliminarProductos' element={localStorage.getItem('loggedUser') ? <PaginaEliminarProductos/> : <Navigate to="/" replace />} />
+        <Route path='/paginaEliminarProductos' element={sessionStorage.getItem('loggedUser') ? <PaginaEliminarProductos/> : <Navigate to="/" replace />} />
 
-        <Route path="/subirProducto" element={localStorage.getItem('loggedUser') ? <SubirProducto /> : <Navigate to="/" replace />}/>
+        <Route path="/subirProducto" element={sessionStorage.getItem('loggedUser') ? <SubirProducto /> : <Navigate to="/" replace />}/>
         </Routes>
     </>
   );

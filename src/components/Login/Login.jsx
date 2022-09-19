@@ -34,10 +34,10 @@ const Login = () => {
       const user = data.user;
 
       //Añade los datos al local storage
-      window.localStorage.setItem(
+      window.sessionStorage.setItem(
         'loggedUser', JSON.stringify(user)
       )
-      window.localStorage.setItem(
+      window.sessionStorage.setItem(
         'token', JSON.stringify(data.accessToken)      
       )
       

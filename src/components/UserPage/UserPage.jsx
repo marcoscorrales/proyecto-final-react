@@ -14,7 +14,7 @@ const UserPage = () => {
   const [loggedUserJSON, setloggedUserJSON] = useState(null);
 
     useEffect(() =>{
-        setloggedUserJSON(localStorage.getItem('loggedUser'));
+        setloggedUserJSON(sessionStorage.getItem('loggedUser'));
     }, []);
   
     let parametros = useParams();
@@ -26,6 +26,7 @@ const UserPage = () => {
   const [seguidores, setSeguidores] = useState([]);
   const [diseños, setDiseños] = useState([]);
   const [follow, setFollow] = useState('');
+  const [mismoid, setMismoid] = useState(false);
   
     useEffect (()=>{
   
@@ -53,14 +54,19 @@ const UserPage = () => {
       //Ver si el usuario ha dado seguir
     const verSeguimiento = async () =>{
       try {
-        let result = await axios.get(`${endpoint}/verseguimiento/${usuario}`,{ headers: { Authorization: 'Bearer '+JSON.parse(localStorage.getItem('token')) }}
+        let result = await axios.get(`${endpoint}/verseguimiento/${usuario}`,{ headers: { Authorization: 'Bearer '+JSON.parse(sessionStorage.getItem('token')) }}
         );
-        console.log(result);
         if(result.data===1){
           setFollow("seguido")
         }else{
           setFollow("seguir")
         }
+
+        //Ver si es el mismo usuario
+        if(JSON.parse(sessionStorage.getItem('loggedUser')).id === usuario){
+          setMismoid(true);
+        }
+
         
       } catch (error) {
         console.error(error.response.data);     
@@ -80,7 +86,7 @@ const UserPage = () => {
       try {
         let result = await axios.get(          
           `${endpoint}/follow/${usuario}`,
-          { headers: { Authorization: 'Bearer '+JSON.parse(localStorage.getItem('token')) }});
+          { headers: { Authorization: 'Bearer '+JSON.parse(sessionStorage.getItem('token')) }});
         console.log(result);
         if(follow==='seguir'){
             setSeguidores(seguidores+1)
@@ -99,7 +105,7 @@ const UserPage = () => {
       if(loggedUserJSON){
           return(
           <>
-                  <button className='button__seguir' onClick={() => seguir()}><BsCheck size={22} className={follow}/>{follow}</button>
+                  <button className={mismoid ? 'd-none' : 'button__seguir'} onClick={() => seguir()}><BsCheck size={22} className={follow}/>{follow}</button>
               </>
           )
       }else{

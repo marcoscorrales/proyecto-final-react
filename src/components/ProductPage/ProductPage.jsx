@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { Link,useParams } from 'react-router-dom';
 import './ProductPage.css';
 import {BsHeartFill} from 'react-icons/bs'
-import {BsHeart} from 'react-icons/bs'
 import axios from 'axios';
 
 const endpoint= 'http://127.0.0.1:8000/api'
 const endpointUserImage= 'http://127.0.0.1:8000/uploads/users/'
 const endpointModelImage= 'http://127.0.0.1:8000/uploads/imagemodels/'
 const endpointDownload= 'http://127.0.0.1:8000/uploads/filesmodels/'
+const linkPaypal = 'https://www.paypal.com/cl/webapps/mpp/paypal-me';
 
 const ProductPage = () => {
 
@@ -24,7 +24,7 @@ const ProductPage = () => {
     let producto = (parseInt(parametros.id));
 
     useEffect (()=>{
-      setloggedUserJSON(localStorage.getItem('loggedUser'));
+      setloggedUserJSON(sessionStorage.getItem('loggedUser'));
 
       //Devuelve la informacion del modelo
     const getInfo = async () =>{
@@ -36,7 +36,7 @@ const ProductPage = () => {
     //Ver si el usuario ha dado megusta
     const vermegusta = async () =>{
       try {
-        let result = await axios.get(`${endpoint}/verlike/${producto}`,{ headers: { Authorization: 'Bearer '+JSON.parse(localStorage.getItem('token')) }}
+        let result = await axios.get(`${endpoint}/verlike/${producto}`,{ headers: { Authorization: 'Bearer '+JSON.parse(sessionStorage.getItem('token')) }}
         );
         console.log(result);
         if(result.data===1){
@@ -59,7 +59,7 @@ const ProductPage = () => {
       try {
         let result = await axios.get(          
           `${endpoint}/like/${modelo.id}`,
-          { headers: { Authorization: 'Bearer '+JSON.parse(localStorage.getItem('token')) }});
+          { headers: { Authorization: 'Bearer '+JSON.parse(sessionStorage.getItem('token')) }});
         console.log(result);
         if(like==='activo'){
             setLikes(likes-1)
@@ -75,7 +75,6 @@ const ProductPage = () => {
     }
 
     const printButtons= () =>{
-      console.log(like)
       if(loggedUserJSON){
           return(
           <>
@@ -94,7 +93,7 @@ const ProductPage = () => {
   return (
     <div className='productPage'>
         <h1 className='productPage__title'>
-            Producto : {modelo.nombre}
+            Modelo : {modelo.nombre}
         </h1>
         <div className='productPage-image'>
           <img src={endpointModelImage+modelo.imagen} className='img-fluid' alt="producto" />
@@ -102,7 +101,7 @@ const ProductPage = () => {
         <div className='productPage-info'>
           <div className='productPage-info__buttons'>
 
-          <a href={endpointDownload+archivo} className="link-descarga" target="_blank" rel="noopener noreferrer" download>
+          <a href={modelo.precio > 0 ? linkPaypal : endpointDownload+archivo } className="link-descarga" target="_blank" rel="noopener noreferrer" download>
             <button className='btn-descargar'>Descargar</button>
             </a>
 

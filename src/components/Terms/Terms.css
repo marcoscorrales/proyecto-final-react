@@ -1,0 +1,18 @@
+.terminos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    height: 140vh;
+    width: 100%;
+    object-fit: contain;
+}
+
+.texto__terminos{
+    text-align: justify;
+    width: 100%;
+    max-width: 1200px;
+    font-size: 1.2rem;
+    padding: 1rem;
+}

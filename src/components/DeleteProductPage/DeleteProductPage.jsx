@@ -6,12 +6,12 @@ const endpoint= 'http://127.0.0.1:8000/api'
 const endpointModelImage= 'http://127.0.0.1:8000/uploads/imagemodels/'
 
 const DeleteProductPage = () => {
-  let usuario = (JSON.parse(localStorage.getItem('loggedUser')).id);
+  let usuario = (JSON.parse(sessionStorage.getItem('loggedUser')).id);
 
   const [modelos, setModelos] = useState([]);
 
   const eliminar = async (id) =>{
-    const response = await axios.delete(`${endpoint}/modelo/${id}`,{ headers: { Authorization: 'Bearer '+JSON.parse(localStorage.getItem('token')) }});
+    const response = await axios.delete(`${endpoint}/modelo/${id}`,{ headers: { Authorization: 'Bearer '+JSON.parse(sessionStorage.getItem('token')) }});
     alert("Has eliminado el modelo")
     window.location.reload();
   }

@@ -15,8 +15,8 @@ const Navbar = () => {
     const [loggedUserJSON, setloggedUserJSON] = useState(null);
     //Guardar el ususario cada vez que carga el navbar
     useEffect(() =>{
-        setloggedUserJSON(localStorage.getItem('loggedUser'));
-        setToken(JSON.parse(localStorage.getItem('token')));
+        setloggedUserJSON(sessionStorage.getItem('loggedUser'));
+        setToken(JSON.parse(sessionStorage.getItem('token')));
     }, []);
 
     //Cerrar sesion 

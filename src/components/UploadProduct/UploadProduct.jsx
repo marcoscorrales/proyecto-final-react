@@ -26,7 +26,7 @@ const UploadProduct = () => {
 
         fData.append('nombre', nombre);
         fData.append('descripcion', descripcion);
-        fData.append('id_creador', JSON.parse(localStorage.getItem('loggedUser')).id);
+        fData.append('id_creador', JSON.parse(sessionStorage.getItem('loggedUser')).id);
         fData.append('precio', precio);
         fData.append('categoria', categoria);
         fData.append('archivo', archivo); 
@@ -42,6 +42,7 @@ const UploadProduct = () => {
                 .then(function (response) {
                   //handle success
                   alert("Modelo subido")
+                  window.location.reload();
                   console.log(response);
                 })
                 .catch(function (response) {

@@ -1,8 +1,6 @@
 import React from 'react'
 import './Sponsors.css'
 import {Carousel} from 'react-bootstrap';
-import imagen__carousel from '../../assets/images/fondo_liquid.webp'
-import sponsor1 from '../../assets/images/sponsor1.jpg'
 
 import {BsFillMegaphoneFill} from 'react-icons/bs'
 

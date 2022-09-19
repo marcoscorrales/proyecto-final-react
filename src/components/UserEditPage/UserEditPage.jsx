@@ -12,7 +12,7 @@ import { changePassword } from '../../services/services';
 import axios from 'axios';
 
 const UserEditPage = () => {
-  const endpoint= 'http://127.0.0.1:8000/api/usuario/'+JSON.parse(localStorage.getItem('loggedUser')).id;
+  const endpoint= 'http://127.0.0.1:8000/api/usuario/'+JSON.parse(sessionStorage.getItem('loggedUser')).id;
   const endpoint2= 'http://127.0.0.1:8000/api'
     const [nombre, setNombre] = useState('');
     const [email, setEmail] = useState('');
@@ -25,7 +25,7 @@ const UserEditPage = () => {
   
       //Devuelve la informacion del usuario
       const getInfoUser = async () =>{
-        const response = await axios.get(`${endpoint2}/usuario/${JSON.parse(localStorage.getItem('loggedUser')).id}`);
+        const response = await axios.get(`${endpoint2}/usuario/${JSON.parse(sessionStorage.getItem('loggedUser')).id}`);
         setNombre(response.data.nombre)
         setEmail(response.data.email)
         setAvatar(response.data.avatar)
