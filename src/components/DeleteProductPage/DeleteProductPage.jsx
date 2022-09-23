@@ -34,7 +34,7 @@ const DeleteProductPage = () => {
                {modelos.map((modelo) => {
 
                   return  <div key={modelo.id} className='productCard'>
-                  <div className='productCard-img'>
+                  <div className='productCard-img2'>
             
                        <img src={endpointModelImage+modelo.imagen} className='productCard-img__img' alt="producto" />
     

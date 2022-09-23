@@ -14,7 +14,7 @@ const ProductCard = (prop) => {
             <div className='productCard-img__overlay'>
                <BsEyeFill size={30}/>
             </div>
-             <img src={prop.imgProduct} className='productCard-img__img' alt="producto" />
+             <img src={prop.imgProduct} className='productCard-img__img img-fluid' alt="producto" />
           </Link>
         </div>
         <div className="productCard-content">
